@@ -2,22 +2,23 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// passing in two props below. For the proile prop,
-// the user will click on the profile image and 
-// it should lead them directly to their profile page
-
 const Header = ({ pageTitle, profileImg }) => {
   return (
-    <header className="flex justify-between items-center p-5 bg-green-500 text-white">
-      <h3 className="text-lg">Okay Bloomer</h3>
-      <h1 className="text-xl">{pageTitle}</h1>
-      <Link href="/profile">
-        <a>
-          <div className="w-8 h-8 relative">
-            <Image src={profileImg} layout="fill" className="rounded-full" />
+    <header className="level p-3 has-background-success has-text-white">
+      <div className="level-left">
+        <h3 className="title is-5 has-text-white">Okay Bloomer</h3>
+      </div>
+      <div className="level-item">
+        <h1 className="title is-2">{pageTitle}</h1>
+      </div>
+      <div className="level-right">
+        <Link href="/profile">
+          <div className="w-25 h-25 position-relative">
+            <Image src={profileImg} layout="fill" className="is-rounded" />
+            <p className="is-sr-only">Profile</p>
           </div>
-        </a>
-      </Link>
+        </Link>
+      </div>
     </header>
   );
 };
