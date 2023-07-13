@@ -12,9 +12,11 @@ const Header = ({ pageTitle, profileImg }) => {
       <h3 className="text-lg">Okay Bloomer</h3>
       <h1 className="text-xl">{pageTitle}</h1>
       <Link href="/profile">
+        <a>
           <div className="w-8 h-8 relative">
             <Image src={profileImg} layout="fill" className="rounded-full" />
           </div>
+        </a>
       </Link>
     </header>
   );
