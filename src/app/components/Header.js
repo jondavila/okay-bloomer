@@ -8,15 +8,31 @@ import Link from 'next/link';
 
 const Header = ({ pageTitle, profileImg }) => {
   return (
-    <header className="flex justify-between items-center p-5 bg-green-500 text-white">
-      <h3 className="text-lg">Okay Bloomer</h3>
-      <h1 className="text-xl">{pageTitle}</h1>
-      <Link href="/profile">
-          <div className="w-8 h-8 relative">
-            <Image src={profileImg} layout="fill" className="rounded-full" />
+    <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
+      <div className="navbar-brand">
+        <a className="navbar-item">
+          <h3 className="title is-4 has-text-white">Okay Bloomer</h3>
+        </a>
+      </div>
+
+      <div className="navbar-menu">
+        <div className="navbar-start">
+          <div className="navbar-item">
+            <h1 className="title is-4">{pageTitle}</h1>
           </div>
-      </Link>
-    </header>
+        </div>
+      </div>
+
+      <div className="navbar-end">
+        <div className="navbar-item">
+          <Link href="/profile">
+            <div className="w-8 h-8 relative">
+              <Image src={profileImg} layout="fill" className="rounded-full" />
+            </div>
+          </Link>
+        </div>
+      </div>
+    </nav>
   );
 };
 
