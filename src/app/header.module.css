@@ -1,0 +1,22 @@
+.myNavbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: rgb(152, 226, 152);
+}
+
+.myNavbarItem {
+    display: flex;
+    align-items: center;
+    color: white !important;
+}
+
+.pageTitle {
+    margin-right: 4em;
+    font-size: 1.5em !important;
+}

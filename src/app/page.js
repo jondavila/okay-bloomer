@@ -5,8 +5,8 @@ import Header from './components/Header'
 export default function Home() {
   return (
     <>
-    <Header />
-    <SearchBox />
+      <Header pageTitle="Plant Search" profileImg="/path_to_profile_image.jpg" />
+      <SearchBox />
     </>
   )
 }
