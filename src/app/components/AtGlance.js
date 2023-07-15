@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css'; // import calendar css for styling
+import styles from "../atglance.module.css";
 
 export default function AtAGlance() {
     const [sanctuaryData, setSanctuaryData] = useState({
@@ -27,13 +28,13 @@ export default function AtAGlance() {
             });
     }, []);
 
-    // If the data hasn't loaded yet, show a loading message
+    // ff the data hasn't loaded yet, show a loading message
     if (!sanctuaryData) {
         return <div>Loading sanctuary data...</div>
     }
 
     const handleTaskCompletion = (taskId) => {
-        // handle task completion logic here
+        // need to handle task completion logic here
     }
 
     return (
@@ -52,19 +53,17 @@ export default function AtAGlance() {
                     ))}
                 </div>
             </div>
-            <div className="card">
-                <div className="card-content">
-                    <h3>Calendar View</h3>
-                    <Calendar
-                        tileContent={({ date, view }) => {
-                            // check if there is a task on the current date
-                            if (sanctuaryData.calendarData.some(task => task.date === date.toLocaleDateString())) {
-                                // if there is, return a black dot
-                                return <span>&#8226;</span>
-                            }
-                        }}
-                    />
-                </div>
+            <div className={styles.atAGlance}>
+                <h3>Calendar View</h3>
+                <Calendar className={styles.myCalendar}
+                    tileContent={({ date, view }) => {
+                        // check if there is a task on the current date
+                        if (sanctuaryData.calendarData.some(task => task.date === date.toLocaleDateString())) {
+                            // if there is, return a black dot
+                            return <span>&#8226;</span>
+                        }
+                    }}
+                />
             </div>
             <div className="card">
                 <div className="card-content">

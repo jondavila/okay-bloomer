@@ -37,7 +37,7 @@ export default function Sanctuary() {
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
             <div className="container">
                 <div className="columns is-multiline">
-                    <div className="column is-2">
+                    <div className="column is-3">
                         <p>At a Glance:</p>
                         <div className="card">
                             <div className="card-content">
@@ -55,7 +55,7 @@ export default function Sanctuary() {
                             </div>
                         ))}
                     </div>
-                    <div className="column is-4">
+                    <div className="column is-3">
                         <p>Nursery/Care:</p>
                         <div className="card">
                             <div className="card-content">
