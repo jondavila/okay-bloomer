@@ -5,6 +5,7 @@ import axios from 'axios';
 import 'bulma/css/bulma.min.css';
 import styles from '../sanctuary.module.css';
 import Header from '../components/Header';
+import AtAGlance from '../components/AtGlance';
 
 
 export default function Sanctuary() {
@@ -40,7 +41,7 @@ export default function Sanctuary() {
                         <p>At a Glance:</p>
                         <div className="card">
                             <div className="card-content">
-                                {/* placing at a glance contents here */}
+                                <AtAGlance />
                             </div>
                         </div>
                     </div>
