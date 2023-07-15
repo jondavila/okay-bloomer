@@ -32,43 +32,45 @@ export default function Sanctuary() {
 
 
     return (
-        <div className="container">
+        <>
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
-            <div className="columns is-multiline">
-                <div className="column is-2">
-                    <p>At a Glance:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            {/* placing at a glance contents here */}
-                        </div>
-                    </div>
-                </div>
-                <div className="column is-6">
-                    <p>My Plants:</p>
-                    {plants.map((plant, index) => (
-                        <div className="card" key={index}>
+            <div className="container">
+                <div className="columns is-multiline">
+                    <div className="column is-2">
+                        <p>At a Glance:</p>
+                        <div className="card">
                             <div className="card-content">
-                                {/* Populate with plant data */}
+                                {/* placing at a glance contents here */}
                             </div>
                         </div>
-                    ))}
-                </div>
-                <div className="column is-4">
-                    <p>Nursery/Care:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            {/* placing nursery/care contents here */}
-                        </div>
                     </div>
-                    <p>Journal:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            {/* placing journal contents here */}
+                    <div className="column is-6">
+                        <p>My Plants:</p>
+                        {plants.map((plant, index) => (
+                            <div className="card" key={index}>
+                                <div className="card-content">
+                                    {/* Populate with plant data */}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="column is-4">
+                        <p>Nursery/Care:</p>
+                        <div className="card">
+                            <div className="card-content">
+                                {/* placing nursery/care contents here */}
+                            </div>
+                        </div>
+                        <p>Journal:</p>
+                        <div className="card">
+                            <div className="card-content">
+                                {/* placing journal contents here */}
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
