@@ -18,7 +18,7 @@ const Header = ({ pageTitle, profileImg }) => {
 
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/profile">
-          <Image src={profileImg} width={50} height={50} className="rounded-full" />
+          <Image src={profileImg} width={50} height={50} className="rounded-full" alt='Profile Image'/>
         </Link>
       </div>
     </nav>
