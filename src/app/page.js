@@ -6,10 +6,8 @@ import PlantCardGrid from './components/PlantCardGrid'
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header pageTitle="Plant Search" profileImg="/path_to_profile_image.jpg" />
       <SearchBox />
-      <PlantCardGrid />
-
     </>
   )
 }
