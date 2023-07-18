@@ -34,7 +34,21 @@ export default function AtAGlance() {
     }
 
     const handleTaskCompletion = (taskId) => {
-        // need to handle task completion logic here
+        axios.put(`http://localhost:4000/tasks/complete/${taskId}`)
+            .then(response => {
+                console.log('Task marked as complete: ', response);
+                // after task is marked as complete, refresh the data
+                axios.get('http://localhost:4000/sanctuaryData')
+                    .then(response => {
+                        setSanctuaryData(response.data);
+                    })
+                    .catch(error => {
+                        console.log('Error fetching sanctuary data: ', error);
+                    });
+            })
+            .catch(error => {
+                console.log('Error marking task as complete: ', error);
+            });
     }
 
     return (
