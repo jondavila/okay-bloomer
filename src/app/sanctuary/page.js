@@ -6,6 +6,8 @@ import 'bulma/css/bulma.min.css';
 import styles from '../sanctuary.module.css';
 import Header from '../components/Header';
 import AtAGlance from '../components/AtGlance';
+import PlantJournal from '../components/PlantJournal';
+import PlantFaq from '../components/PlantFaq';
 
 
 export default function Sanctuary() {
@@ -55,16 +57,16 @@ export default function Sanctuary() {
                     ))}
                 </div>
                 <div className="column is-3">
-                    <p>Nursery/Care:</p>
+                    <p>FAQ:</p>
                     <div className="card">
                         <div className="card-content">
-                            {/* placing nursery/care contents here */}
+                            <PlantFaq />
                         </div>
                     </div>
                     <p>Journal:</p>
                     <div className="card">
                         <div className="card-content">
-                            {/* placing journal contents here */}
+                            <PlantJournal />
                         </div>
                     </div>
                 </div>
