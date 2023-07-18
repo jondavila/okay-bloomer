@@ -1,4 +1,4 @@
-import JournalEntry from "./JournalEntry"
+import JournalEntry from "./JournalEntry";
 import styles from '../sanctuary.module.css';
 
 export default function PlantJournal() {
@@ -6,19 +6,15 @@ export default function PlantJournal() {
         <div className={`card-content ${styles.noPadding}`}>
             <div className="content">
                 <p className="card-header-title">Events</p>
-                <div className="scrollable-content" style={{ maxHeight: '200px', overflow: 'auto' }}>
-                    <table className="table is-fullwidth is-striped">
-                        <tbody>
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                            <JournalEntry />
-                        </tbody>
-                    </table>
+                <div className="scrollable-content" style={{ maxHeight: '250px', overflow: 'auto' }}>
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
+                    <JournalEntry />
                 </div>
                 <a href="#" className="card-footer-item">View All</a>
             </div>
