@@ -70,7 +70,7 @@ export default function AtAGlance() {
             </div>
             <div className={styles.atAGlance}>
                 <h3>Calendar View</h3>
-                <Calendar className={styles.myCalendar}
+                <Calendar className={`react-calendar ${styles.myCalendar}`}
                     tileContent={({ date, view }) => {
                         // check if there is a task on the current date
                         if (sanctuaryData.calendarData.some(task => task.date === date.toLocaleDateString())) {
@@ -79,6 +79,7 @@ export default function AtAGlance() {
                         }
                     }}
                 />
+
             </div>
             <div className="card">
                 <div className="card-content">
