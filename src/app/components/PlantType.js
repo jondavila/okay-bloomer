@@ -2,17 +2,18 @@ import React from 'react';
 import Image from 'next/image';
 import 'bulma/css/bulma.min.css';
 
-export default function PlantType() {
+export default function PlantType({ type }) {
     return (
-        <div class="column is-3">
-            <div class="card is-shady">
-                <div class="card-content">
-                    <div class="content">
-                        <h1>Plant Type</h1>
-                        <span class="button is-link modal-button" data-target="modal-image2">Image modal</span>
+        <div className="column is-3">
+            <a>
+                <div className="card is-shady">
+                    <div className="card-content">
+                        <div className="content">
+                            <h1>{type}</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     );
 };
