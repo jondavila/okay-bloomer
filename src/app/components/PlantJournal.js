@@ -5,7 +5,7 @@ export default function PlantJournal() {
     return (
         <div className={`card-content ${styles.noPadding}`}>
             <div className="content">
-                <p className="card-header-title">Events</p>
+                <p className="card-header-title">My Journal Entries:</p>
                 <div className="scrollable-content" style={{ maxHeight: '250px', overflow: 'auto' }}>
                     <JournalEntry />
                     <JournalEntry />

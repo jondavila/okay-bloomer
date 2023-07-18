@@ -53,6 +53,7 @@ export default function AtAGlance() {
 
     return (
         <div>
+            <p className="card-header-title">At a Glance:</p>
             <div className="card">
                 <div className="card-content">
                     <h3>Upcoming Tasks</h3>
