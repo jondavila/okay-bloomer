@@ -5,6 +5,7 @@ import axios from 'axios';
 import 'bulma/css/bulma.min.css';
 import styles from '../sanctuary.module.css';
 import Header from '../components/Header';
+import AtAGlance from '../components/AtGlance';
 
 
 export default function Sanctuary() {
@@ -35,11 +36,11 @@ export default function Sanctuary() {
         <div className="container">
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
             <div className="columns is-multiline">
-                <div className="column is-2">
+                <div className="column is-3">
                     <p>At a Glance:</p>
                     <div className="card">
                         <div className="card-content">
-                            {/* placing at a glance contents here */}
+                            <AtAGlance />
                         </div>
                     </div>
                 </div>
@@ -53,7 +54,7 @@ export default function Sanctuary() {
                         </div>
                     ))}
                 </div>
-                <div className="column is-4">
+                <div className="column is-3">
                     <p>Nursery/Care:</p>
                     <div className="card">
                         <div className="card-content">
