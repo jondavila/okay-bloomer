@@ -117,11 +117,11 @@ export default function EditUser() {
 
 	useEffect(() => {
 		if (localStorage.getItem('jwtToken')) {
-			fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/email/${localStorage.getItem('email')}`)
-				.then((res) => res.json())
-				.then((data) => {
+			axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/email/${localStorage.getItem('email')}`)
+				.then((response) => {
+					const data = response.data;
 					// data is an object
-					let userData = jwtDecode(localStorage.getItem('jwtToken'));
+					const userData = jwtDecode(localStorage.getItem('jwtToken'));
 
 					if (data.user[0].email === userData.email) {
 						setData(data.user[0]);

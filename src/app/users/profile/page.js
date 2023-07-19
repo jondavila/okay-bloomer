@@ -26,18 +26,17 @@ export default function Profile() {
 
     useEffect(() => {
         if (localStorage.getItem('jwtToken')) {
-            fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/email/${localStorage.getItem('email')}`)
-                .then((res) => res.json())
-                .then((data) => {
+            axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/email/${localStorage.getItem('email')}`)
+                .then((response) => {
+                    const data = response.data;
                     // data is an object
-                    let userData = jwtDecode(localStorage.getItem('jwtToken'));
+                    const userData = jwtDecode(localStorage.getItem('jwtToken'));
                     if (userData.email === localStorage.getItem('email')) {
                         setData(data.user[0]);
                         setLoading(false);
                     } else {
                         router.push('/users/login');
                     }
-
                 })
                 .catch((error) => {
                     console.log(error);
@@ -46,9 +45,7 @@ export default function Profile() {
         } else {
             router.push('/users/login');
         }
-
-
-    }, []);
+    }, [router]);
 
     if (isLoading) return <p>Loading...</p>;
     if (!data) return <p>No data shown...</p>;
