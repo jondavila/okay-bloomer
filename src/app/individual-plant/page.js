@@ -1,5 +1,5 @@
 'use client';
-
+import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import axios from 'axios';
@@ -9,9 +9,11 @@ export default function IndividualPlant() {
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const router = useRouter();
 
     const handleSelect = () => {
-        localStorage.setItem('selected-plant-id', plant.plantId);
+        // localStorage.setItem('selected-plant-id', plant.plantId);
+        router.push('/individual-plant/add-to-sanctuary');
     };
 
     useEffect(() => {
