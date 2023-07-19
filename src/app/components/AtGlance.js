@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CustomCalendar from './CustomCalendar';
+import CircularChart from './CircularChart';
 import styles from "../atglance.module.css";
 
 export default function AtAGlance() {
@@ -10,9 +11,9 @@ export default function AtAGlance() {
         tasks: [],
         calendarData: [],
         healthStats: {
-            happy: 0,
+            good: 0,
             okay: 0,
-            sad: 0
+            poor: 0
         }
     });
 
@@ -75,10 +76,10 @@ export default function AtAGlance() {
             <div className="card">
                 <div className="card-content">
                     <h3>Health Stats</h3>
-                    <div>
-                        <div>Happy: {sanctuaryData.healthStats.happy}%</div>
-                        <div>Okay: {sanctuaryData.healthStats.okay}%</div>
-                        <div>Sad: {sanctuaryData.healthStats.sad}%</div>
+                    <div className={styles.flexWrapper}>
+                        <CircularChart percentage={sanctuaryData.healthStats.good} color="green" />
+                        <CircularChart percentage={sanctuaryData.healthStats.okay} color="orange" />
+                        <CircularChart percentage={sanctuaryData.healthStats.poor} color="red" />
                     </div>
                 </div>
             </div>

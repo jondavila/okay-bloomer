@@ -4,3 +4,8 @@
     overflow: auto;
     /* Enable scrolling if content is wider than the container */
 }
+
+.flexWrapper {
+    display: flex;
+    flex-flow: row nowrap;
+}
