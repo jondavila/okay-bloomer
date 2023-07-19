@@ -17,7 +17,7 @@ export default function Sanctuary() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/plants') //temporary placeholder for now, will replace.
+        axios.get('http://localhost:8000/sanctuary/plants')
             .then(response => {
                 setPlants(response.data);
                 setLoading(false);
@@ -51,11 +51,7 @@ export default function Sanctuary() {
                     <div className="column is-6">
                         <p>My Plants:</p>
                         {plants.map((plant, index) => (
-                            <div className="card" key={index}>
-                                <div className="card-content">
-                                    <PlantCardGrid plantCardsArray={plants} />
-                                </div>
-                            </div>
+                            <PlantCardGrid key={index} plantCardsArray={plant} />
                         ))}
                     </div>
                     <div className="column is-3">
@@ -77,6 +73,3 @@ export default function Sanctuary() {
         </>
     );
 }
-
-
-
