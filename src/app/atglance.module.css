@@ -1,8 +1,11 @@
 .atAGlance {
     width: 100%;
+    /* Ensure this container takes full width */
+    overflow: auto;
+    /* Enable scrolling if content is wider than the container */
 }
 
-.myCalendar {
-    width: 90%;
-    margin: auto;
+.flexWrapper {
+    display: flex;
+    flex-flow: row nowrap;
 }

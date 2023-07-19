@@ -1,0 +1,30 @@
+.myCard {
+    margin: 0 !important;
+}
+
+.noPadding {
+    padding: 0 !important;
+}
+
+
+.journalEntry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.journalText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75%;
+    margin-right: 1rem;
+    /* Provide some space between the text and the button */
+}
+
+.journalButton {
+    display: flex;
+    align-items: center;
+    /* Vertically center align the text inside the button */
+}

@@ -6,6 +6,8 @@ import 'bulma/css/bulma.min.css';
 import styles from '../sanctuary.module.css';
 import Header from '../components/Header';
 import AtAGlance from '../components/AtGlance';
+import PlantJournal from '../components/PlantJournal';
+import PlantFaq from '../components/PlantFaq';
 
 
 export default function Sanctuary() {
@@ -33,43 +35,45 @@ export default function Sanctuary() {
 
 
     return (
-        <div className="container">
+        <>
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
-            <div className="columns is-multiline">
-                <div className="column is-3">
-                    <p>At a Glance:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            <AtAGlance />
-                        </div>
-                    </div>
-                </div>
-                <div className="column is-6">
-                    <p>My Plants:</p>
-                    {plants.map((plant, index) => (
-                        <div className="card" key={index}>
+            <div className="container">
+                <div className="columns is-multiline">
+                    <div className="column is-3">
+                        <br />
+                        <div className="card">
                             <div className="card-content">
-                                {/* Populate with plant data */}
+                                <AtAGlance />
                             </div>
                         </div>
-                    ))}
-                </div>
-                <div className="column is-3">
-                    <p>Nursery/Care:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            {/* placing nursery/care contents here */}
-                        </div>
                     </div>
-                    <p>Journal:</p>
-                    <div className="card">
-                        <div className="card-content">
-                            {/* placing journal contents here */}
+                    <div className="column is-6">
+                        <p>My Plants:</p>
+                        {plants.map((plant, index) => (
+                            <div className="card" key={index}>
+                                <div className="card-content">
+                                    {/* Populate with plant data */}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="column is-3">
+                        <br />
+                        <div className="card">
+                            <div className="card-content">
+                                <PlantFaq />
+                            </div>
+                        </div>
+                        <br />
+                        <div className="card">
+                            <div className="card-content">
+                                <PlantJournal />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 

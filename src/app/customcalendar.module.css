@@ -1,0 +1,44 @@
+.customCalendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+.monthYearHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.dayOfWeek {
+    text-align: center;
+    font-size: 0.5em;
+    width: 15%;
+    /* To distribute the width evenly */
+    padding: 0.6em;
+    /* Or any value that suits your design */
+}
+
+
+.day {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.prevNextButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
