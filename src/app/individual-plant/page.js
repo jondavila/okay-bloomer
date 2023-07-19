@@ -12,14 +12,14 @@ export default function IndividualPlant() {
 
     const handleSelect = () => {
         localStorage.setItem('selected-plant-id', plant.plantId);
-    }
+    };
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
 
         axios.get('http://localhost:8000/plantDetails/' + plantId) // insert api url
             .then((response) => {
-                const foundPlant = response.data;
+                const foundPlant = response.data.plantDetail;
                 console.log('found plant, yay', foundPlant);
                 setPlant(foundPlant);
                 setLoading(false);
@@ -27,7 +27,6 @@ export default function IndividualPlant() {
             .catch((error) => {
                 console.log('error: ', error);
             });
-
     }, []);
 
     if (loading) {
