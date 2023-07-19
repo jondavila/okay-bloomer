@@ -41,6 +41,20 @@ export default function PlantPage() {
                                 </div>
                             </div>
                         </div>
+                        <br />
+                        <div className="card">
+                            <div className="card-content has-text-centered">
+                                <p className="subtitle is-6">Add a note about today:</p>
+                                <div className="card">
+                                    <input class="input" type="text" placeholder="Add Title"></input>
+                                    <textarea class="textarea mt-3" placeholder="Journal Entry..."></textarea>
+                                </div>
+                                <div className="has-text-centered">
+                                    <br />
+                                    <button className="button is-info is-success">Add to Journal</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div className="column is-3">
                         <div className="card">
