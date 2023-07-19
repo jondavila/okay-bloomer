@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Task from './Task';
 import CustomCalendar from './CustomCalendar';
 import CircularChart from './CircularChart';
-import Task from './Task'; // import the Task component
 import styles from "../atglance.module.css";
 
 export default function AtAGlance() {
@@ -19,7 +19,10 @@ export default function AtAGlance() {
     useEffect(() => {
         axios.get('http://localhost:4000/sanctuaryData')
             .then(response => {
-                setSanctuaryData(response.data);
+                // sorting the tasks based on dueDate and only taking the first five
+                const sortedTasks = response.data.tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0, 5);
+
+                setSanctuaryData({ ...response.data, tasks: sortedTasks });
             })
             .catch(error => {
                 console.log('Error fetching sanctuary data: ', error);
@@ -37,7 +40,7 @@ export default function AtAGlance() {
                 <div className="card-content">
                     <h3>Upcoming Tasks</h3>
                     {sanctuaryData.tasks.map((task, index) => (
-                        <Task task={task} key={index} /> // use the Task component for each task
+                        <Task key={task.id} task={task} />
                     ))}
                 </div>
             </div>
