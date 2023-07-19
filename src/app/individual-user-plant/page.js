@@ -4,7 +4,7 @@ import Header from '../components/Header';
 export default function PlantPage() {
     return (
         <div>
-            <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
+            <Header pageTitle="Jerry" profileImg="/path_to_profile_image.jpg" />
             <br />
             <div className="container">
                 <div className="columns is-multiline">

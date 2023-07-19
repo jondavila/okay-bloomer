@@ -33,7 +33,7 @@ export default function Profile() {
                     <section className="section">
                         <div className="content">
                             <h2>About Me</h2>
-                            <p>Hey it's a me, random user</p>
+                            <p>Hey I am a random user</p>
                         </div>
                         <div className="buttons is-centered">
                             <button className="button is-primary is-small">Edit</button>
