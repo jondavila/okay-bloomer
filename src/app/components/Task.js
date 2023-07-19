@@ -3,65 +3,41 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Task() {
-    const [task, setTask] = useState({
-        taskName: '',
-        status: '',
-        dueDate: '',
-    });
-    const [isLoading, setLoading] = useState(true);
-    const [isError, setError] = useState(false);
+export default function Task({ task }) {
+    const [status, setStatus] = useState(task.status);
+    const [plantNickname, setPlantNickname] = useState('');
 
-    // Fetch task data
     useEffect(() => {
-        const fetchData = async () => {
-            setError(false);
-            setLoading(true);
+        axios.get(`http://localhost:4000/plants/${task.plantId}`)
+            .then(response => {
+                setPlantNickname(response.data.nickname);
+            })
+            .catch(error => {
+                console.log('Error fetching plant data: ', error);
+            });
+    }, [task.plantId]);
 
-            try {
-                const result = await axios.get('https://idktheroute/task/id');
-                setTask(result.data);
-            } catch (error) {
-                setError(true);
-            }
-
-            setLoading(false);
-        };
-
-        fetchData();
-    }, []);
-
-    // Update status
-    const handleCheckboxChange = async () => {
-        try {
-            const updatedTask = { ...task, status: 'completed' };
-            await axios.put('https://yourapi.com/task/id', updatedTask);
-            setTask(updatedTask);
-        } catch (error) {
-            console.error('Failed to update task status:', error);
-        }
-    };
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (isError) {
-        return <div>Error loading task.</div>;
+    const handleCheckboxChange = () => {
+        axios.put(`http://localhost:4000/tasks/complete/${task.id}`)
+            .then(response => {
+                console.log('Task marked as complete: ', response);
+                setStatus('completed');
+            })
+            .catch(error => {
+                console.log('Error marking task as complete: ', error);
+            });
     }
 
     return (
-        <div>
-            <h1>{task.taskName}</h1>
-            <p>Status: {task.status}</p>
-            <p>Due Date: {task.dueDate}</p>
-            {task.status === 'pending' && (
-                <input
-                    type="checkbox"
-                    onChange={handleCheckboxChange}
-                    checked={task.status === 'completed'}
-                />
-            )}
+        <div className="card">
+            <div className="card-content">
+                {status === 'pending' && (
+                    <input type="checkbox" onClick={handleCheckboxChange} />
+                )}
+                <span>{task.date}</span>
+                <span>{task.name}</span>
+                <span>{plantNickname}</span>
+            </div>
         </div>
     );
 }
