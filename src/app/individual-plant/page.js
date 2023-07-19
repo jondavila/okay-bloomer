@@ -42,19 +42,6 @@ export default function IndividualPlant() {
                                 </div>
                             </div>
                         </div>
-                        <br />
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>Information</p>
-                            </div>
-                        </div>
-                        <br />
-                        <br />
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>More Information!</p>
-                            </div>
-                        </div>
                     </div>
                     <div className="column is-8">
                         <div className="card">
