@@ -49,7 +49,12 @@ export default function IndividualPlant() {
                                 <p className="title is-4">{plant.commonName}</p>
                             </div>
                             <br />
-                            <p className="subtitle is-6" style={{ padding: '20px' }}></p>
+                            <div style={{ padding: '20px' }}>
+                                <p className="subtitle is-6">Watering: {plant.wateringDescription}</p>
+                                <p className="subtitle is-6">Sunlight: {plant.sunlightDescription}</p>
+                                <p className="subtitle is-6">Pruning: {plant.pruningDescription}</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
