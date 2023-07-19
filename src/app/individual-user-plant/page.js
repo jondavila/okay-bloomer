@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import Header from '../components/Header';
 import HealthRating from '../components/HealthRating';
 import CareRecord from '../components/CareRecord';
@@ -98,6 +99,12 @@ export default function PlantPage({ plantId, handlePlantDeletion }) {
                             <div className="card-content has-text-centered">
                                 <PlantUpcomingTasks tasks={upcomingTasks} onTaskComplete={handleTaskCompletion} />
                             </div>
+                        </div>
+                        <br />
+                        <div className={`has-text-centered ${styles.centerButton}`}>
+                            <Link href={`/individual-plant/${plantId}`}>
+                                <button className="button is-link is-rounded">Learn More About My Plant</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
