@@ -46,7 +46,7 @@ export default function IndividualPlant() {
                     <div className="column is-8">
                         <div className="card">
                             <div className="card-content has-text-centered">
-                                <p className="title is-4">Plant Name</p>
+                                <p className="title is-4">{plant.commonName}</p>
                             </div>
                             <br />
                             <p className="subtitle is-6" style={{ padding: '20px' }}></p>
