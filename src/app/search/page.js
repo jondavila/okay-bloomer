@@ -7,6 +7,7 @@ import PlantTypeGrid from "../components/PlantTypeGrid";
 import axios from 'axios';
 import PlantType from "../components/PlantType";
 import { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 
 
 
