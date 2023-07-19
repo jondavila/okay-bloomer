@@ -64,6 +64,7 @@ export default function IndividualPlant() {
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 {plant.commonName && <p className="title is-4">{plant.commonName}</p>}
+                                {plant.description && <p className="subtitle is-6">{plant.description}</p>}
                             </div>
                             <br />
                             <div style={{ padding: '20px' }}>
