@@ -3,7 +3,6 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 export default function DeletePlant({ plantId, onDelete }) {
     const [showConfirm, setShowConfirm] = useState(false);
 
@@ -11,11 +10,13 @@ export default function DeletePlant({ plantId, onDelete }) {
         axios.delete(`http://localhost:4000/plants/${plantId}`)
             .then(response => {
                 if (response.status === 200) {
+                    toast.success('Plant deleted', { position: toast.POSITION.BOTTOM_RIGHT });
                     onDelete();
                 }
             })
             .catch(error => {
                 console.error('Error deleting plant: ', error);
+                toast.error('There was an error, please try again later', { position: toast.POSITION.BOTTOM_RIGHT });
             });
     };
 
