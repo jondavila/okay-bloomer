@@ -7,15 +7,20 @@ export default function Home() {
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(true);
   
-    useEffect(() => {
-      fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`)
-      .then((res) => res.json())
-      .then((data) => {
+  useEffect(() => {
+    axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/users`)
+      .then((response) => {
+        const data = response.data;
         // data is an object
         setData(data);
         setLoading(false);
       })
-    }, []);
+      .catch((error) => {
+        console.log(error);
+        // Handle error if needed
+      });
+  }, []);
+
   
     if (isLoading) return <p>Loading...</p>
     if (!data) return <p>No data shown...</p>
