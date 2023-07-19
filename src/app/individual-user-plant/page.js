@@ -25,9 +25,10 @@ export default function PlantPage({ singlePlantTasks }) {
                                 <CareRecord tasks={singlePlantTasks} />
                             </div>
                         </div>
-                        <div className={`has-text-centered ${styles.card}`}>
+                        <div className={`has-text-centered`}>
                             <button className="button is-danger">Remove Plant</button>
                         </div>
+
                     </div>
                     <div className="column is-6">
                         <div className={`card ${styles.card}`}>
