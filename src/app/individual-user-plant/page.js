@@ -64,12 +64,13 @@ export default function PlantPage({ plantId, handlePlantDeletion }) {
                         </div>
                         <div className={`card ${styles.card}`}>
                             <div className="card-content has-text-centered">
-                                <CareRecord tasks={pastTasks} />
+                                <CareRecord tasks={plantId} />
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
-                            <DeletePlant plantId={plantId} onDelete={handlePlantDeletion} />
+                            <button className="button is-danger">Remove Plant</button>
                         </div>
+
                     </div>
                     <div className="column is-6">
                         <div className={`card ${styles.card}`}>
