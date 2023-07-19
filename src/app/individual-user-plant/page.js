@@ -1,10 +1,15 @@
+"use client";
+
 import React from 'react';
 import Header from '../components/Header';
+import HealthRating from '../components/HealthRating';
+import CareRecord from '../components/CareRecord';
+import PlantUpcomingTasks from '../components/PlantUpcomingTasks';
 
-export default function PlantPage() {
+export default function PlantPage({ singlePlantTasks }) {
     return (
         <div>
-            <Header pageTitle="Jerry" profileImg="/path_to_profile_image.jpg" />
+            <Header pageTitle="My Plant" profileImg="/path_to_profile_image.jpg" />
             <br />
             <div className="container">
                 <div className="columns is-multiline">
@@ -12,19 +17,25 @@ export default function PlantPage() {
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 <p>Your Plant is at</p>
-                                <p>Stat Bar Image</p>
+                                <HealthRating tasks={singlePlantTasks} />
                             </div>
                         </div>
                         <br />
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 <p>Care Schedule</p>
-                                <p>Past Care Record</p>
+                                <PlantUpcomingTasks tasks={singlePlantTasks} />
                             </div>
                         </div>
                         <br />
                         <div className="has-text-centered">
-                            <button class="button is-danger">Remove Plant</button>
+                            <button className="button is-danger">Remove Plant</button>
+                        </div>
+                        <div className="card">
+                            <div className="card-content has-text-centered">
+                                <p>Past Care Record</p>
+                                <CareRecord tasks={singlePlantTasks} />
+                            </div>
                         </div>
                     </div>
                     <div className="column is-6">
@@ -46,33 +57,14 @@ export default function PlantPage() {
                             <div className="card-content has-text-centered">
                                 <p className="subtitle is-6">Add a note about today:</p>
                                 <div className="card">
-                                    <input class="input" type="text" placeholder="Add Title"></input>
-                                    <textarea class="textarea mt-3" placeholder="Journal Entry..."></textarea>
+                                    <input className="input" type="text" placeholder="Add Title"></input>
+                                    <textarea className="textarea mt-3" placeholder="Journal Entry..."></textarea>
                                 </div>
                                 <div className="has-text-centered">
                                     <br />
                                     <button className="button is-info is-success">Add to Journal</button>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div className="column is-3">
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>Tasks for Today:</p>
-                                {/* plug in today's tasks component */}
-                            </div>
-                        </div>
-                        <br />
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>Upcoming Tasks:</p>
-                                {/* plug in upcoming tasks component */}
-                            </div>
-                        </div>
-                        <br />
-                        <div className="has-text-centered">
-                            <button class="button is-info">Learn More About My Plant!</button>
                         </div>
                     </div>
                 </div>
