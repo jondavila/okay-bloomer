@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import AtAGlance from '../components/AtGlance';
 import PlantJournal from '../components/PlantJournal';
 import PlantFaq from '../components/PlantFaq';
-import PlantTypeGrid from '../components/PlantCardGrid';
+import PlantCardGrid from '../components/PlantCardGrid';
 
 
 export default function Sanctuary() {
@@ -53,11 +53,10 @@ export default function Sanctuary() {
                         {plants.map((plant, index) => (
                             <div className="card" key={index}>
                                 <div className="card-content">
-                                    {/* Populate with plant data */}
+                                    <PlantCardGrid plantCardsArray={plants} />
                                 </div>
                             </div>
                         ))}
-                        <PlantTypeGrid plantTypeArray = {plants} />
                     </div>
                     <div className="column is-3">
                         <br />
