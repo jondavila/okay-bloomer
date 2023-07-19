@@ -1,5 +1,5 @@
 "use client";
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bulma/css/bulma.min.css';
 import { useState, useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
 import { useRouter } from 'next/navigation';
@@ -14,7 +14,7 @@ export default function Profile() {
     if (typeof window !== 'undefined') {
         const expirationTime = new Date(parseInt(localStorage.getItem('expiration')) * 1000);
         let currentTime = Date.now();
-        
+
         // make a condition that compares exp and current time
         if (currentTime >= expirationTime) {
             handleLogout();
