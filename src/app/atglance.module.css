@@ -1,11 +1,6 @@
 .atAGlance {
     width: 100%;
-    height: 100%;
-}
-
-.atAGlance .myCalendar {
-    width: 90% !important;
-    height: 100% !important;
-    margin: auto !important;
-    box-sizing: border-box !important;
+    /* Ensure this container takes full width */
+    overflow: auto;
+    /* Enable scrolling if content is wider than the container */
 }

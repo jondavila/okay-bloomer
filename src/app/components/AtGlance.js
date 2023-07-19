@@ -2,8 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'; // import calendar css for styling
+import CustomCalendar from './CustomCalendar';
 import styles from "../atglance.module.css";
 
 export default function AtAGlance() {
@@ -18,7 +17,6 @@ export default function AtAGlance() {
     });
 
     useEffect(() => {
-        // need to replace with actual API endpoint
         axios.get('http://localhost:4000/sanctuaryData')
             .then(response => {
                 setSanctuaryData(response.data);
@@ -28,7 +26,6 @@ export default function AtAGlance() {
             });
     }, []);
 
-    // ff the data hasn't loaded yet, show a loading message
     if (!sanctuaryData) {
         return <div>Loading sanctuary data...</div>
     }
@@ -37,7 +34,6 @@ export default function AtAGlance() {
         axios.put(`http://localhost:4000/tasks/complete/${taskId}`)
             .then(response => {
                 console.log('Task marked as complete: ', response);
-                // after task is marked as complete, refresh the data
                 axios.get('http://localhost:4000/sanctuaryData')
                     .then(response => {
                         setSanctuaryData(response.data);
@@ -68,19 +64,14 @@ export default function AtAGlance() {
                     ))}
                 </div>
             </div>
-            <div className={styles.atAGlance}>
-                <h3>Calendar View</h3>
-                <Calendar className={`react-calendar ${styles.myCalendar}`}
-                    tileContent={({ date, view }) => {
-                        // check if there is a task on the current date
-                        if (sanctuaryData.calendarData.some(task => task.date === date.toLocaleDateString())) {
-                            // if there is, return a black dot
-                            return <span>&#8226;</span>
-                        }
-                    }}
-                />
-
+            <br />
+            <div className="card">
+                <div className="card-content">
+                    <h3>Calendar View</h3>
+                    <CustomCalendar calendarData={sanctuaryData.calendarData} />
+                </div>
             </div>
+            <br />
             <div className="card">
                 <div className="card-content">
                     <h3>Health Stats</h3>

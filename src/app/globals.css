@@ -105,17 +105,3 @@ a {
   text-shadow: -4px 4px black;
 
 }
-
-body .react-calendar {
-  width: 100% !important;
-  box-sizing: border-box !important;
-}
-
-
-body .react-calendar .react-calendar__navigation {
-  width: 100% !important;
-}
-
-body .react-calendar .react-calendar__month-view__days__day {
-  padding: 1em !important;
-}
