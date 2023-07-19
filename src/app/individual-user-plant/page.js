@@ -22,7 +22,7 @@ export default function PlantPage({ singlePlantTasks }) {
                         </div>
                         <div className={`card ${styles.card}`}>
                             <div className="card-content has-text-centered">
-                                <CareRecord tasks={singlePlantTasks} />
+                                <CareRecord tasks={plantId} />
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
