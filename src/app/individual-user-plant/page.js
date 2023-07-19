@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
+import SingleCircleBar from '../components/SingleCircleBar';
 
 export default function PlantPage() {
     return (
@@ -12,7 +13,8 @@ export default function PlantPage() {
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 <p>Your Plant is at</p>
-                                <p>Stat Bar Image</p>
+                                {/* Pass the actual careRecord data here */}
+                                <SingleCircleBar careRecord={careRecordData} />
                             </div>
                         </div>
                         <br />
