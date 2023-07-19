@@ -1,29 +1,24 @@
-"use client";
-
 import React from 'react';
 import axios from 'axios';
 
-export default function SingleTask({ task }) {
+export default function SingleTask({ task, onComplete }) {
     const handleTaskCompletion = () => {
-        axios.put(`http://localhost:4000/tasks/complete/${task.id}`) // again, need to replace
+        axios.put(`http://localhost:4000/tasks/${task.id}`, { status: 'completed' })
             .then(response => {
-                console.log('Task marked as complete: ', response);
+                if (response.status === 200) {
+                    onComplete(task.id);
+                }
             })
             .catch(error => {
-                console.log('Error marking task as complete: ', error);
+                console.error('Error marking task as complete: ', error);
             });
-    }
+    };
 
     return (
         <div>
-            <input
-                type="checkbox"
-                onChange={handleTaskCompletion}
-                disabled={task.status !== 'pending'}
-            />
-            <span>{task.dueDate}</span>
-            <span>{task.taskName}</span>
-            <span>{task.nickname}</span>
+            <h4>{task.taskName}</h4>
+            <p>Due Date: {task.dueDate}</p>
+            <input type="checkbox" onClick={handleTaskCompletion} />
         </div>
     );
 }
