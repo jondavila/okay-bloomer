@@ -4,9 +4,11 @@ import 'bulma/css/bulma.min.css';
 
 export default function PlantCardGrid({ plantCardsArray }) {
     let rows = [];
-    for (let i = 0; i < plantCardsArray.length; i++) {
-        let plant = plantCardsArray[i];
-        rows.push(<PlantCard key={i.toString()} plant={plant} />);
+    if (plantCardsArray) {
+        for (let i = 0; i < plantCardsArray.length; i++) {
+            let plant = plantCardsArray[i];
+            rows.push(<PlantCard key={i.toString()} plant={plant} />);
+        }
     }
     return (
         <div>
