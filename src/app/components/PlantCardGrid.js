@@ -1,11 +1,11 @@
-import PlantType from './PlantType';
+import PlantCard from './PlantCard';
 import 'bulma/css/bulma.min.css';
 
-export default function PlantTypeGrid({ plantTypesArray }) {
+export default function PlantCardGrid({ plantCardsArray }) {
     let rows = [];
-    for (let i = 0; i < plantTypesArray.length; i++) {
-        let type = plantTypesArray[i];
-        rows.push(<PlantType key={i.toString()} type={type} />);
+    for (let i = 0; i < plantCardsArray.length; i++) {
+        let plant = plantCardsArray[i];
+        rows.push(<PlantCard key={i.toString()} plant={plant} />);
     }
     return (
         <div>
