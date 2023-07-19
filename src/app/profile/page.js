@@ -15,7 +15,7 @@ export default function Profile() {
                         <div className="card profile-card">
                             <div className="card">
                                 <figure className="image is-140x140 is-rounded" style={{ padding: '20px' }} >
-                                    <img src="/profile.jpg" alt="Profile Picture" />
+                                    <img className="is-rounded" src="/profile.jpg" alt="Profile Picture" />
                                 </figure>
                                 <div className="buttons is-centered mt-3">
                                     <button className="button is-primary is-small">Edit</button>
@@ -28,6 +28,7 @@ export default function Profile() {
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 <h2>My Plant Babies (Favorites)</h2>
+                                <br />
                                 <div className="grid-container">
                                     <PlantFavoritesGrid />
                                 </div>
