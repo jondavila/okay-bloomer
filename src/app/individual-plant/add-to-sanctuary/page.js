@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from 'react';
+import 'bulma/css/bulma.min.css';
 import Header from '@/app/components/Header';
-import 'bulma/css/bulma.min.css'
 
 const PlantCarePage = () => {
     // State for user inputs
@@ -15,13 +15,6 @@ const PlantCarePage = () => {
         <div>
             <Header pageTitle="Add Plant to Sanctuary -- Care Guide" profileImg="/path_to_profile_image.jpg" />
             <br />
-
-            <div className="container has-text-centered">
-                <h1 className="title">Add Plant to Collection - Care Guide</h1>
-            </div>
-            <br />
-
-
             <div className="container">
                 <div className="columns is-multiline is-centered">
                     <div className="column is-4">
@@ -111,18 +104,14 @@ const PlantCarePage = () => {
                         </div>
                     </div>
                 </div>
-
                 <br />
-                <div className="container">
-                    <div className="centered-container">
-                        <div className="field">
-                            <div className="control">
-                                <button className="button is-primary">Add to Collection</button>
-                            </div>
+                <div className="has-text-centered">
+                    <div className="field">
+                        <div className="control">
+                            <button className="button is-primary">Add to Collection</button>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div >
 
