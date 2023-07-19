@@ -1,7 +1,7 @@
 import PlantType from './PlantType';
 import 'bulma/css/bulma.min.css';
 
-export default function PlantTypeGrid({ plantTypesArray }) {
+export default function PlantTypeGrid({ plantTypesArray = [] }) {
     let rows = [];
     for (let i = 0; i < plantTypesArray.length; i++) {
         let type = plantTypesArray[i];
