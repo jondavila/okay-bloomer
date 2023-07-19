@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import Header from '../components/Header';
 import HealthRating from '../components/HealthRating';
 import CareRecord from '../components/CareRecord';
@@ -14,6 +14,13 @@ import styles from '../userplantpage.module.css';
 export default function PlantPage({ plantId }) {
     const [pastTasks, setPastTasks] = useState([]);
     const [upcomingTasks, setUpcomingTasks] = useState([]);
+
+    const router = useRouter();
+
+    const handlePlantDeletion = () => {
+
+        router.push('/sanctuary');
+    };
 
     // Fetch past tasks for HealthRating and CareRecord
     useEffect(() => {
@@ -69,8 +76,9 @@ export default function PlantPage({ plantId }) {
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
-                            <button className="button is-danger">Remove Plant</button>
+                            <DeletePlant plantId={plantId} onDelete={handlePlantDeletion} />
                         </div>
+
                     </div>
                     <div className="column is-6">
                         <div className={`card ${styles.card}`}>
