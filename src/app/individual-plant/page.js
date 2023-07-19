@@ -43,6 +43,21 @@ export default function IndividualPlant() {
                                     </figure>
                                 </div>
                             }
+                            {plant &&
+                                <div className="card">
+                                    <div className="card-content has-text-centered">
+                                        <p className="title is-4">Details</p>
+                                        <p className="subtitle is-6">Scientific Name: {plant.scientificName.join(', ')}</p>
+                                        <p className="subtitle is-6">Type: {plant.type}</p>
+                                        <p className="subtitle is-6">Cycle: {plant.cycle}</p>
+                                        <p className="subtitle is-6">Watering: {plant.watering}</p>
+                                        <p className="subtitle is-6">Sunlight: {plant.sunlight.join(', ')}</p>
+                                        <p className="subtitle is-6">Maintenance: {plant.maintenance}</p>
+                                        <p className="subtitle is-6">Indoor: {plant.indoor ? 'Yes' : 'No'}</p>
+                                        <p className="subtitle is-6">Care Level: {plant.careLevel}</p>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className="column is-8">
