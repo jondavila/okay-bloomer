@@ -8,7 +8,8 @@ const Header = ({ pageTitle, profileImg }) => {
     <nav className={`navbar ${styles.myNavbar}`} role="navigation" aria-label="main navigation">
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/">
-          <h3 style={{ color: 'white' }} className="title is-4">Okay Bloomer</h3>
+          <img src="./logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px' }} />
+          <h3 style={{ display: 'inline', color: 'white' }} className="title is-4">Okay Bloomer</h3>
         </Link>
       </div>
 
@@ -18,7 +19,7 @@ const Header = ({ pageTitle, profileImg }) => {
 
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/profile">
-          <Image src={profileImg} width={50} height={50} className="rounded-full" alt='Profile Image'/>
+          <Image src={profileImg} width={50} height={50} className="rounded-full" alt='Profile Image' />
         </Link>
       </div>
     </nav>
