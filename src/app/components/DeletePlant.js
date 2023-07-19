@@ -24,15 +24,15 @@ export default function DeletePlant({ plantId, onDelete }) {
         return (
             <div>
                 <h4>Are you sure you want to delete this plant? Once you do, it's gone forever.</h4>
-                <button onClick={handleDelete}>Delete</button>
-                <button onClick={() => setShowConfirm(false)}>Cancel</button>
+                <button className="button is-danger is-rounded" onClick={handleDelete}>Delete</button>
+                <button className="button is-info is-rounded" onClick={() => setShowConfirm(false)}>Cancel</button>
             </div>
         );
     }
 
     return (
         <div>
-            <button onClick={() => setShowConfirm(true)}>Remove Plant</button>
+            <button className="button is-danger is-rounded" onClick={() => setShowConfirm(true)}>Remove Plant</button>
         </div>
     );
 }
