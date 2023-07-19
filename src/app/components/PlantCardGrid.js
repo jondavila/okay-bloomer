@@ -1,6 +1,7 @@
 import PlantCard from './PlantCard';
 import 'bulma/css/bulma.min.css';
 
+
 export default function PlantCardGrid({ plantCardsArray }) {
     let rows = [];
     for (let i = 0; i < plantCardsArray.length; i++) {
