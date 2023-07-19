@@ -37,7 +37,7 @@ export default function IndividualPlant() {
                             <div className="card">
                                 <div className="card-image">
                                     <figure className="image is-4by3">
-                                        <img alt={`Plant Image`} />
+                                        <img src={plant.image} alt={`Plant ${plant.commonName}`} />
                                     </figure>
                                 </div>
                             </div>
