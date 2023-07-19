@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../healthrating.module.css';
 
-export default function HealthRating({ tasks }) {
+export default function HealthRating({ tasks = [] }) {
     const completedTasksCount = tasks.filter(task => task.status === 'completed').length;
     const healthScore = tasks.length !== 0 ? Math.floor((completedTasksCount / tasks.length) * 100) : 0;
 

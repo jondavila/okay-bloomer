@@ -1,0 +1,23 @@
+.imageCard {
+    width: 100%;
+    margin: auto;
+}
+
+.healthRatingCard {
+    width: 75%;
+    margin: auto;
+}
+
+.upcomingTasksCard {
+    width: 75%;
+    margin: auto;
+}
+
+.container {
+    padding: 2em;
+}
+
+.card {
+    margin-bottom: 1em;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+}
