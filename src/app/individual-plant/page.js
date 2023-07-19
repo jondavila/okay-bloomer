@@ -1,7 +1,31 @@
+'use client';
+
 import React from 'react';
 import Header from '../components/Header';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 export default function IndividualPlant() {
+    const [plant, setPlant] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const plantId = localStorage.getItem('plant-id');
+
+        axios.get('http://localhost:8000/plantDetails/' + plantId) // insert api url
+            .then((response) => {
+                const foundPlant = response.data;
+                console.log('found plant, yay', foundPlant);
+                setPlant(foundPlant);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log('error: ', error);
+            });
+
+    }, []);
+
+    console.log('plant me baby', plant);
     return (
         <div>
             <Header pageTitle="Plant Name" profileImg="/path_to_profile_image.jpg" />
@@ -13,7 +37,7 @@ export default function IndividualPlant() {
                             <div className="card">
                                 <div className="card-image">
                                     <figure className="image is-4by3">
-                                        <img src="/placeholderplant.jpg" alt="Placeholder image" />
+                                        <img alt={`Plant Image`} />
                                     </figure>
                                 </div>
                             </div>
@@ -38,7 +62,7 @@ export default function IndividualPlant() {
                                 <p className="title is-4">Plant Name</p>
                             </div>
                             <br />
-                            <p className="subtitle is-6" style={{ padding: '20px' }}>Background/Description/Important Info</p>
+                            <p className="subtitle is-6" style={{ padding: '20px' }}></p>
                         </div>
                     </div>
                 </div>

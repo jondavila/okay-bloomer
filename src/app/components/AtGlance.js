@@ -1,7 +1,6 @@
-"use client";
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Task from './Task';
 import CustomCalendar from './CustomCalendar';
 import CircularChart from './CircularChart';
 import styles from "../atglance.module.css";
@@ -20,7 +19,10 @@ export default function AtAGlance() {
     useEffect(() => {
         axios.get('http://localhost:4000/sanctuaryData')
             .then(response => {
-                setSanctuaryData(response.data);
+                // sorting the tasks based on dueDate and only taking the first five
+                const sortedTasks = response.data.tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0, 5);
+
+                setSanctuaryData({ ...response.data, tasks: sortedTasks });
             })
             .catch(error => {
                 console.log('Error fetching sanctuary data: ', error);
@@ -31,23 +33,6 @@ export default function AtAGlance() {
         return <div>Loading sanctuary data...</div>
     }
 
-    const handleTaskCompletion = (taskId) => {
-        axios.put(`http://localhost:4000/tasks/complete/${taskId}`)
-            .then(response => {
-                console.log('Task marked as complete: ', response);
-                axios.get('http://localhost:4000/sanctuaryData')
-                    .then(response => {
-                        setSanctuaryData(response.data);
-                    })
-                    .catch(error => {
-                        console.log('Error fetching sanctuary data: ', error);
-                    });
-            })
-            .catch(error => {
-                console.log('Error marking task as complete: ', error);
-            });
-    }
-
     return (
         <div>
             <p className="card-header-title">At a Glance:</p>
@@ -55,13 +40,7 @@ export default function AtAGlance() {
                 <div className="card-content">
                     <h3>Upcoming Tasks</h3>
                     {sanctuaryData.tasks.map((task, index) => (
-                        <div className="card" key={index}>
-                            <div className="card-content">
-                                <input type="checkbox" onClick={() => handleTaskCompletion(task.id)} />
-                                <span>{task.date}</span>
-                                <span>{task.name}</span>
-                            </div>
-                        </div>
+                        <Task key={task.id} task={task} />
                     ))}
                 </div>
             </div>

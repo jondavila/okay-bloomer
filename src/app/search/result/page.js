@@ -11,19 +11,21 @@ import PlantCardGrid from "../../components/PlantCardGrid";
 
 export default function SearchPage() {
     const [rows, setRows] = useState([]);
-    const [plantType, setPlantType] = useState(localStorage.getItem('plantType'));
+    const [plantType, setPlantType] = useState('');
+    
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/plantDetails/type/' + plantType) // insert api url
-            .then((response) => {
-                const plants = response.data.plantDetails;
-                console.log('plants', plants);
-                setRows(plants);
-            })
-            .catch((error) => {
-                console.log('error: ', error);
-            });
-    }, []);
+        useEffect(() => {
+            axios.get('http://localhost:8000/plantDetails/type/' + plantType) // insert api url
+                .then((response) => {
+                    setPlantType(localStorage.getItem('plantType'));
+                    const plants = response.data.plantDetails;
+                    console.log('plants', plants);
+                    setRows(plants);
+                })
+                .catch((error) => {
+                    console.log('error: ', error);
+                });
+        }, [plantType]);
 
 
 

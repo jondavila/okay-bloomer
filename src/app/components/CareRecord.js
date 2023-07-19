@@ -1,39 +1,32 @@
-"use client";
-"use strict";
-
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import styles from "./CareRecord.module.css";
 
-export default function CareRecord() {
-    const [tasks, setTasks] = React.useState([]);
+export default function CareRecord({ plantId }) {
+    const [tasks, setTasks] = useState([]);
 
-    React.useEffect(() => {
-        axios.get('http://localhost:4000/tasks') // replace with actual endpoint
+    useEffect(() => {
+        axios.get(`http://localhost:4000/plants/${plantId}/tasks`)
             .then(response => {
-                setTasks(response.data);
+                const pastMonthTasks = response.data.filter(task =>
+                    (task.status === 'missed' || task.status === 'completed') &&
+                    new Date() - new Date(task.dueDate) <= 30 * 24 * 60 * 60 * 1000
+                );
+                pastMonthTasks.sort((a, b) => new Date(b.dueDate) - new Date(a.dueDate));
+                setTasks(pastMonthTasks);
             })
             .catch(error => {
-                console.log('Error fetching tasks data: ', error);
+                console.log('Error fetching plant tasks: ', error);
             });
-    }, []);
-
-    const completedAndMissedTasks = tasks.filter(task => task.status !== 'pending');
-
-    if (!tasks.length) {
-        return <div>Loading tasks data...</div>
-    }
+    }, [plantId]);
 
     return (
-        <div className={styles.careRecord}>
-            <h2>Care Record</h2>
-            {completedAndMissedTasks.map((task, index) => (
-                <div className="card" key={index}>
-                    <div className="card-content">
-                        <span>{task.date}</span>
-                        <span>{task.name}</span>
-                        <span>Status: {task.status}</span>
-                    </div>
+        <div>
+            <h3>Care Record for Plant {plantId}</h3>
+            {tasks.map((task, index) => (
+                <div key={index}>
+                    <h4>{task.taskName}</h4>
+                    <p>Status: {task.status}</p>
+                    <p>Due Date: {task.dueDate}</p>
                 </div>
             ))}
         </div>
