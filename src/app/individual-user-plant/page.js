@@ -2,11 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import HealthRating from '../components/HealthRating';
 import CareRecord from '../components/CareRecord';
 import PlantUpcomingTasks from '../components/PlantUpcomingTasks';
+import DeletePlant from '../components/DeletePlant';
 import styles from '../userplantpage.module.css';
+
 
 export default function PlantPage({ plantId }) {
     const [pastTasks, setPastTasks] = useState([]);
