@@ -3,10 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import axios from 'axios';
+import Link from 'next/link';
 
 export default function IndividualPlant() {
     const [plant, setPlant] = useState(null);
-    const [isLoading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const handleSelect = () => {
+        localStorage.setItem('selected-plant-id', plant.plantId);
+    }
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
@@ -24,7 +30,7 @@ export default function IndividualPlant() {
 
     }, []);
 
-    if (isLoading) {
+    if (loading) {
         return <div>Loading...</div>;
     }
 
@@ -79,7 +85,9 @@ export default function IndividualPlant() {
             <br />
             <div className="has-text-centered">
                 <p className="subtitle is-6">Add this plant to your Plant Sanctuary? </p>
-                <button className="button is-info">Select!</button>
+                <Link href="/individual-plant/add-to-sanctuary">
+                    <button className="button is-info" onClick={handleSelect}>Select!</button>
+                </Link>
             </div>
         </div>
     );
