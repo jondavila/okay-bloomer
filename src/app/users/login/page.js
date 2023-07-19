@@ -30,6 +30,7 @@ export default function Login() {
             .then(response => {
 
                 localStorage.setItem('jwtToken', response.data.token);
+                localStorage.setItem('userId', response.data.userData._id);
                 localStorage.setItem('email', response.data.userData.email);
                 localStorage.setItem('expiration', response.data.userData.exp);
                 setAuthToken(response.data.token);
