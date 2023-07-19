@@ -1,13 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 export default function IndividualPlant() {
     const [plant, setPlant] = useState(null);
-    const [isLoading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const handleSelect = () => {
+        localStorage.setItem('selected-plant-id', plant.plantId);
+    }
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
@@ -25,7 +30,10 @@ export default function IndividualPlant() {
 
     }, []);
 
-    console.log('plant me baby', plant);
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div>
             <Header pageTitle="Plant Name" profileImg="/path_to_profile_image.jpg" />
@@ -34,44 +42,52 @@ export default function IndividualPlant() {
                 <div className="columns is-multiline">
                     <div className="column is-4">
                         <div className="card">
-                            <div className="card">
+                            {plant && plant.image &&
                                 <div className="card-image">
                                     <figure className="image is-4by3">
-                                        <img alt={`Plant Image`} />
+                                        <img src={plant.image} alt={`Plant ${plant.commonName}`} />
                                     </figure>
                                 </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>Information</p>
-                            </div>
-                        </div>
-                        <br />
-                        <br />
-                        <div className="card">
-                            <div className="card-content has-text-centered">
-                                <p>More Information!</p>
-                            </div>
+                            }
+                            {plant &&
+                                <div className="card">
+                                    <div className="card-content has-text-centered">
+                                        <p className="title is-4">Details</p>
+                                        <p className="subtitle is-6">Scientific Name: {plant.scientificName ? plant.scientificName.join(', ') : ''}</p>
+                                        <p className="subtitle is-6">Type: {plant.type}</p>
+                                        <p className="subtitle is-6">Cycle: {plant.cycle}</p>
+                                        <p className="subtitle is-6">Watering: {plant.watering}</p>
+                                        <p className="subtitle is-6">Sunlight: {plant.sunlight ? plant.sunlight.join(', ') : ''}</p>
+                                        <p className="subtitle is-6">Maintenance: {plant.maintenance}</p>
+                                        <p className="subtitle is-6">Indoor: {plant.indoor ? 'Yes' : 'No'}</p>
+                                        <p className="subtitle is-6">Care Level: {plant.careLevel}</p>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                     <div className="column is-8">
                         <div className="card">
                             <div className="card-content has-text-centered">
-                                <p className="title is-4">Plant Name</p>
+                                {plant.commonName && <p className="title is-4">{plant.commonName}</p>}
+                                {plant.description && <p className="subtitle is-6">{plant.description}</p>}
                             </div>
                             <br />
-                            <p className="subtitle is-6" style={{ padding: '20px' }}></p>
+                            <div style={{ padding: '20px' }}>
+                                {plant.wateringDescription && <p className="subtitle is-6">Watering: {plant.wateringDescription}</p>}
+                                {plant.sunlightDescription && <p className="subtitle is-6">Sunlight: {plant.sunlightDescription}</p>}
+                                {plant.pruningDescription && <p className="subtitle is-6">Pruning: {plant.pruningDescription}</p>}
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <br />
             <div className="has-text-centered">
                 <p className="subtitle is-6">Add this plant to your Plant Sanctuary? </p>
-                <button className="button is-info">Select!</button>
+                <Link href="/individual-plant/add-to-sanctuary">
+                    <button className="button is-info" onClick={handleSelect}>Select!</button>
+                </Link>
             </div>
         </div>
     );
