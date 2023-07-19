@@ -7,7 +7,6 @@ import CareRecord from '../components/CareRecord';
 import PlantUpcomingTasks from '../components/PlantUpcomingTasks';
 import styles from '../userplantpage.module.css';
 
-
 export default function PlantPage({ singlePlantTasks }) {
     return (
         <div>
