@@ -9,6 +9,7 @@ import AtAGlance from '../components/AtGlance';
 import PlantJournal from '../components/PlantJournal';
 import PlantFaq from '../components/PlantFaq';
 import UserPlantCardGrid from '../components/UserPlantCardGrid';
+import TaskGrid from '../components/TaskGrid';
 
 
 
@@ -53,12 +54,13 @@ export default function Sanctuary() {
                         <br />
                         <div className="card">
                             <div className="card-content">
-                                <AtAGlance />
+                                <AtAGlance plants={plants} />
                             </div>
                         </div>
                     </div>
-                    <div className="column is-6">
-                        <p>My Plants:</p>
+                    <div className="column is-6 mt-5">
+                        <TaskGrid plantArray={plants} />
+                        <p className="mt-2">My Plants:</p>
                         <UserPlantCardGrid plantCardsArray={plants} />
                     </div>
                     <div className="column is-3">

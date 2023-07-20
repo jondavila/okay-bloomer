@@ -24,12 +24,12 @@ export default function PlantJournal() {
             <div className="content">
                 <p className="card-header-title">My Journal Entries:</p>
                 <div className="scrollable-content" style={{ maxHeight: '250px', overflow: 'auto' }}>
-                    {journalEntries.map((entry, index) => (
+                    {/* {journalEntries.map((entry, index) => (
                         <JournalEntry key={index} entry={entry} />
-                    ))}
+                    ))} */}
                 </div>
                 <a href="#" className="card-footer-item">View All</a>
             </div>
         </div>
-    )
+    );
 }
