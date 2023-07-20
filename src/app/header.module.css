@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'Preahvihear';
+    src: url('https://fonts.gstatic.com/s/preahvihear/v14/vm8zRgWgTgVzaGFl8Fm_WaM.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 .myNavbar {
     display: flex;
     justify-content: space-between;
@@ -8,15 +15,18 @@
     top: 0;
     z-index: 10;
     background-color: #98e298;
+    font-family: 'Preahvihear', sans-serif;
 }
 
 .myNavbarItem {
     display: flex;
     align-items: center;
     color: white !important;
+    font-family: 'Preahvihear', sans-serif;
 }
 
 .pageTitle {
     margin-right: 4em;
     font-size: 1.5em !important;
+    font-family: 'Preahvihear', sans-serif;
 }

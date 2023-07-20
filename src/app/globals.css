@@ -1,10 +1,13 @@
+@font-face {
+  font-family: 'Preahvihear';
+  src: url('https://fonts.gstatic.com/s/preahvihear/v14/vm8zRgWgTgVzaGFl8Fm_WaM.ttf') format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -76,6 +79,7 @@ body {
 }
 
 body {
+  font-family: 'Preahvihear', sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom,
       transparent,
@@ -94,14 +98,16 @@ a {
   }
 }
 
+
+
 #plantFaq {
   margin-top: 0px;
   margin-bottom: 0px;
   text-align: center;
-  font-family: sans-serif;
+  font-family: 'Preahvihear', sans-serif;
   font-size: 3rem;
   letter-spacing: 0.15rem;
-  color: greenyellow;
-  text-shadow: -4px 4px black;
+  color: black;
+
 
 }

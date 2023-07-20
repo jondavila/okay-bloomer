@@ -8,7 +8,7 @@ const Header = ({ pageTitle, profileImg }) => {
     <nav className={`navbar ${styles.myNavbar}`} role="navigation" aria-label="main navigation">
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/">
-          <img src="./logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px' }} />
+          <img src="./logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px', fontFamily: 'Preahvihear, sans-serif' }} />
           <h3 style={{ display: 'inline', color: 'white' }} className="title is-4">Okay Bloomer</h3>
         </Link>
       </div>

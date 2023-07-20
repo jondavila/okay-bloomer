@@ -3,3 +3,10 @@
     padding: 1em;
     box-sizing: border-box;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
