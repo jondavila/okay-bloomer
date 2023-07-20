@@ -8,19 +8,28 @@ import Header from '../components/Header';
 import AtAGlance from '../components/AtGlance';
 import PlantJournal from '../components/PlantJournal';
 import PlantFaq from '../components/PlantFaq';
-import PlantCardGrid from '../components/PlantCardGrid';
+import UserPlantCardGrid from '../components/UserPlantCardGrid';
+
 
 
 export default function Sanctuary() {
     const [plants, setPlants] = useState([]);
+    const [tasks, setTasks] = useState([]);
+    const [journalEntry, setJournalEntry] = useState([]);
+    const [user, setUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
 
     useEffect(() => {
-        axios.get('http://localhost:8000/sanctuary/plants')
+        const userEmail = localStorage.getItem('email');
+        axios.get('http://localhost:8000/sanctuary/user/' + userEmail)
             .then(response => {
-                setPlants(response.data);
+                setUser(response.data.user);
+                setPlants(response.data.user.plants[0].userPlants);
+                setJournalEntry(response.data.user.plants[0].journalEntries);
+                console.log('JON IS WEARING LADIES UNDERWEAR', response.data);
                 setLoading(false);
+                console.log('CALEB WEARS BRAS', plants);
             })
             .catch(error => {
                 console.log('Error fetching plant data: ', error);
@@ -50,9 +59,7 @@ export default function Sanctuary() {
                     </div>
                     <div className="column is-6">
                         <p>My Plants:</p>
-                        {plants.map((plant, index) => (
-                            <PlantCardGrid key={index} plantCardsArray={plant} />
-                        ))}
+                        <UserPlantCardGrid plantCardsArray={plants} />
                     </div>
                     <div className="column is-3">
                         <br />
