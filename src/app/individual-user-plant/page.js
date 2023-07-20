@@ -1,4 +1,5 @@
-"use client";
+"use client"
+"use strict";
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -9,10 +10,27 @@ import CareRecord from '../components/CareRecord';
 import PlantUpcomingTasks from '../components/PlantUpcomingTasks';
 import DeletePlant from '../components/DeletePlant';
 import styles from '../userplantpage.module.css';
+import { useForm } from 'react-hook-form';
 
 export default function PlantPage({ plantId, handlePlantDeletion }) {
     const [pastTasks, setPastTasks] = useState([]);
     const [upcomingTasks, setUpcomingTasks] = useState([]);
+
+    // Initialize useForm
+    const { register, handleSubmit, reset } = useForm();
+
+    // Form submission handler
+    const onSubmit = data => {
+        // You might want to include authentication token in the headers if needed
+        axios.post(`http://localhost:4000/plants/${plantId}/journal`, data)
+            .then(response => {
+                console.log(response);
+                reset(); // Clear form fields after successful submission
+            })
+            .catch(error => {
+                console.log('Error posting journal entry: ', error);
+            });
+    };
 
     // Fetch past tasks for HealthRating and CareRecord
     useEffect(() => {
@@ -70,7 +88,6 @@ export default function PlantPage({ plantId, handlePlantDeletion }) {
                         <div className={`has-text-centered`}>
                             <button className="button is-danger">Remove Plant</button>
                         </div>
-
                     </div>
                     <div className="column is-6">
                         <div className={`card ${styles.card}`}>
@@ -87,11 +104,13 @@ export default function PlantPage({ plantId, handlePlantDeletion }) {
                         <div className={`card ${styles.card}`}>
                             <div className="card-content has-text-centered">
                                 <p className="subtitle is-6">Add a note about today:</p>
-                                <div className="control">
-                                    <input className="input" type="text" placeholder="Add Title"></input>
-                                    <textarea className="textarea mt-3" placeholder="Journal Entry..."></textarea>
-                                </div>
-                                <button className="button is-info is-success">Add to Journal</button>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="control">
+                                        <input {...register("title")} className="input" type="text" placeholder="Add Title"></input>
+                                        <textarea {...register("content")} className="textarea mt-3" placeholder="Journal Entry..."></textarea>
+                                    </div>
+                                    <button className="button is-info is-success">Add to Journal</button>
+                                </form>
                             </div>
                         </div>
                     </div>
