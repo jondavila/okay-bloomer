@@ -3,6 +3,8 @@
     src: url('https://fonts.gstatic.com/s/preahvihear/v14/vm8zRgWgTgVzaGFl8Fm_WaM.ttf') format('truetype');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
 .myNavbar {
     display: flex;
     justify-content: space-between;

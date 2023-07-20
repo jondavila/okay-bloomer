@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../header.module.css';
+import './header.css';
 
 const Header = ({ pageTitle, profileImg }) => {
   return (
