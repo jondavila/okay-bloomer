@@ -17,12 +17,14 @@ export default function AtAGlance() {
     });
 
     useEffect(() => {
-        axios.get('http://localhost:4000/sanctuaryData')
+        axios.get('http://localhost:8000/sanctuary/tasks')
             .then(response => {
+                // filter the tasks to get only the pending tasks
+                const pendingTasks = response.data.filter(task => task.status === 'pending');
                 // sorting the tasks based on dueDate and only taking the first five
-                const sortedTasks = response.data.tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0, 5);
+                const sortedTasks = pendingTasks.sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 5);
 
-                setSanctuaryData({ ...response.data, tasks: sortedTasks });
+                setSanctuaryData(prevState => ({ ...prevState, tasks: sortedTasks }));
             })
             .catch(error => {
                 console.log('Error fetching sanctuary data: ', error);
@@ -40,7 +42,7 @@ export default function AtAGlance() {
                 <div className="card-content">
                     <h3>Upcoming Tasks</h3>
                     {sanctuaryData.tasks.map((task, index) => (
-                        <Task key={task.id} task={task} />
+                        <Task key={task._id} task={task} />
                     ))}
                 </div>
             </div>
