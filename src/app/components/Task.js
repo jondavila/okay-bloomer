@@ -35,8 +35,9 @@ export default function Task({ task }) {
                     <input type="checkbox" onClick={handleCheckboxChange} />
                 )}
                 <span>{task.date}</span>
-                <span>{task.name}</span>
+                <span>{task.taskName}</span>
                 <span>{plantNickname}</span>
+                {/* the plantnickname is currently not acconted for in backend. */}
             </div>
         </div>
     );

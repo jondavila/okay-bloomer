@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import AtAGlance from '../components/AtGlance';
 import PlantJournal from '../components/PlantJournal';
 import PlantFaq from '../components/PlantFaq';
-import PlantTypeGrid from '../components/PlantCardGrid';
+import PlantCardGrid from '../components/PlantCardGrid';
 
 
 export default function Sanctuary() {
@@ -17,7 +17,7 @@ export default function Sanctuary() {
 
 
     useEffect(() => {
-        axios.get('http://localhost:4000/plants') //temporary placeholder for now, will replace.
+        axios.get('http://localhost:8000/sanctuary/plants')
             .then(response => {
                 setPlants(response.data);
                 setLoading(false);
@@ -51,13 +51,8 @@ export default function Sanctuary() {
                     <div className="column is-6">
                         <p>My Plants:</p>
                         {plants.map((plant, index) => (
-                            <div className="card" key={index}>
-                                <div className="card-content">
-                                    {/* Populate with plant data */}
-                                </div>
-                            </div>
+                            <PlantCardGrid key={index} plantCardsArray={plant} />
                         ))}
-                        <PlantTypeGrid plantTypeArray = {plants} />
                     </div>
                     <div className="column is-3">
                         <br />
@@ -78,6 +73,3 @@ export default function Sanctuary() {
         </>
     );
 }
-
-
-
