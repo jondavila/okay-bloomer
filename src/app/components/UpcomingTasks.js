@@ -7,7 +7,7 @@ const UpcomingTasks = ({ plantId }) => {
     const [plantData, setPlantData] = useState(null);
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/userPlants/${plantId}`) //again, gotta plug in correct api endpoint here
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/userPlants/${plantId}`) //again, gotta plug in correct api endpoint here
             .then(response => {
                 setPlantData(response.data);
             })
@@ -17,7 +17,7 @@ const UpcomingTasks = ({ plantId }) => {
     }, [plantId]);
 
     const handleTaskCompletion = (taskId) => {
-        axios.put(`http://localhost:4000/userPlants/${plantId}/tasks/${taskId}`, { status: 'completed' })
+        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/userPlants/${plantId}/tasks/${taskId}`, { status: 'completed' })
             .then(response => {
                 setPlantData(response.data);
             })

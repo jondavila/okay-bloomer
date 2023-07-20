@@ -8,7 +8,7 @@ const PlantHealth = ({ plantId }) => {
     const [plantHealth, setPlantHealth] = useState(0);
 
     useEffect(() => {
-        axios.get(`http://localhost:4000/userPlants/${plantId}`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/userPlants/${plantId}`)
             .then(response => {
                 setPlantData(response.data);
             })

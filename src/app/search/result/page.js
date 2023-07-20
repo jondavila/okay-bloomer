@@ -15,7 +15,7 @@ export default function SearchPage() {
     
 
         useEffect(() => {
-            axios.get('http://localhost:8000/plantDetails/type/' + plantType) // insert api url
+            axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/type/${plantType}`) // insert api url
                 .then((response) => {
                     setPlantType(localStorage.getItem('plantType'));
                     const plants = response.data.plantDetails;

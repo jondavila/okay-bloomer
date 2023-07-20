@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function SingleTask({ task, onComplete }) {
     const handleTaskCompletion = () => {
-        axios.put(`http://localhost:4000/tasks/${task.id}`, { status: 'completed' })
+        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks/${task.id}`, { status: 'completed' })
             .then(response => {
                 if (response.status === 200) {
                     onComplete(task.id);

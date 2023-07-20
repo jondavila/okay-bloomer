@@ -10,7 +10,7 @@ export default function PlantJournal() {
     const [journalEntries, setJournalEntries] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/sanctuary/journal')
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/journal`)
             .then(response => {
                 setJournalEntries(response.data.journalEntries);
             })

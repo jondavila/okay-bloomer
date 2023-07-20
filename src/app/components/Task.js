@@ -8,7 +8,7 @@ export default function Task({ plant, taskArray }) {
     const [plantNickname, setPlantNickname] = useState('');
 
     const handleCheckboxChange = () => {
-        axios.put(`http://localhost:4000/tasks/complete/${taskArray[0].id}`)
+        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks/complete/${taskArray[0].id}`)
             .then(response => {
                 console.log('Task marked as complete: ', response);
                 setStatus('completed');

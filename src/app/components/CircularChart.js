@@ -6,7 +6,7 @@ export default function CircularChart({ color, healthStatus }) {
     const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/sanctuary/plants')
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plants`)
             .then(response => {
                 const totalPlants = response.data.length;
                 if (totalPlants === 0) {

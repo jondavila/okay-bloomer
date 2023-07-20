@@ -8,12 +8,11 @@ export default function FilterablePostTable() {
     const [isLoading, setLoading] = useState(true);
   
     useEffect(() => {
-      fetch('http://localhost:8000/posts')
-      .then((res) => res.json())
-      .then((data) => {
+      axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/posts`)
+      .then((response) => {
         // data is an object
-        console.log('--- posts ---', data);
-        setData(data);
+        console.log('--- posts ---', response.data);
+        setData(response.data);
         setLoading(false);
       })
     }, []);

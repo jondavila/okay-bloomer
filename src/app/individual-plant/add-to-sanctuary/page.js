@@ -18,7 +18,7 @@ const PlantCarePage = () => {
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
 
-        axios.get('http://localhost:8000/plantDetails/' + plantId) // insert api url
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/plantId`) // insert api url
             .then((response) => {
                 const foundPlant = response.data.plantDetail;
                 console.log('NAME IT SOMETHING ELSE IDK', foundPlant);
@@ -28,7 +28,7 @@ const PlantCarePage = () => {
                 console.log('error: ', error);
             });
 
-        axios.get('http://localhost:8000/plantGuides/' + plantId) // insert api url
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantGuides/${plantId}`) // insert api url
             .then((response) => {
                 const foundGuide = response.data.plantGuide;
                 console.log('fFOUND GUIDE YES', foundGuide);

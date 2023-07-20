@@ -14,7 +14,7 @@ export default function SearchPage() {
     const [rows, setRows] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/plantDetails/plantTypes')
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/plantTypes`)
             .then((response) => {
                 const plantTypes = response.data.plantTypes;
                 setRows(plantTypes);

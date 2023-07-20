@@ -23,7 +23,7 @@ export default function PlantPage() {
     // Form submission handler
     // const onSubmit = data => {
     //     // You might want to include authentication token in the headers if needed
-    //     axios.post(`http://localhost:4000/plants/${plantId}/journal`, data)
+    //     axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/plants/${plantId}/journal`, data)
     //         .then(response => {
     //             console.log(response);
     //             reset(); // Clear form fields after successful submission
@@ -83,7 +83,7 @@ export default function PlantPage() {
     //         task.id === taskId ? { ...task, status: 'completed' } : task
     //     ));
     // };
-    
+
     if(!plant) return null;
 
     return (

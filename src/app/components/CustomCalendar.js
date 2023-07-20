@@ -9,7 +9,7 @@ export default function CustomCalendar() {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8000/sanctuary/tasks')
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/tasks`)
             .then(response => {
                 const pendingTasks = response.data.filter(task => task.status === 'pending');
                 setTasks(pendingTasks);

@@ -19,7 +19,7 @@ export default function IndividualPlant() {
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
 
-        axios.get('http://localhost:8000/plantDetails/' + plantId) // insert api url
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/${plantId}`) // insert api url
             .then((response) => {
                 const foundPlant = response.data.plantDetail;
                 console.log('found plant, yay', foundPlant);

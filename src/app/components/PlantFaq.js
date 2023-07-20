@@ -8,7 +8,7 @@ export default function PlantFaq() {
 
     // fetch plant faqs when the component mounts
     useEffect(() => {
-        axios.get('http://localhost:8000/sanctuary/plantfaqs')
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plantfaqs`)
             .then(response => {
                 setFaqs(response.data.plantFaqs);
                 setCurrentFaq(response.data.plantFaqs[Math.floor(Math.random() * response.data.plantFaqs.length)]);

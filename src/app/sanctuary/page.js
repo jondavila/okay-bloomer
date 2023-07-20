@@ -23,7 +23,7 @@ export default function Sanctuary() {
 
     useEffect(() => {
         const userEmail = localStorage.getItem('email');
-        axios.get('http://localhost:8000/sanctuary/user/' + userEmail)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${userEmail}`)
             .then(response => {
                 setUser(response.data.user);
                 setPlants(response.data.user.plants[0].userPlants);

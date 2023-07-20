@@ -15,7 +15,7 @@ export default function AtAGlance({ plants }) {
     });
 
     // useEffect(() => {
-    //     axios.get('http://localhost:8000/sanctuary/tasks')
+    //     axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/tasks`)
     //         .then(response => {
     //             // filter the tasks to get only the pending tasks
     //             const pendingTasks = response.data.filter(task => task.status === 'pending');
