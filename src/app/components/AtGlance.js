@@ -11,11 +11,6 @@ export default function AtAGlance() {
     const [sanctuaryData, setSanctuaryData] = useState({
         tasks: [],
         calendarData: [],
-        healthStats: {
-            good: 0,
-            okay: 0,
-            poor: 0
-        }
     });
 
     useEffect(() => {
@@ -60,9 +55,9 @@ export default function AtAGlance() {
                 <div className="card-content">
                     <h3>Health Stats</h3>
                     <div className={styles.flexWrapper}>
-                        <CircularChart percentage={sanctuaryData.healthStats.good} color="green" />
-                        <CircularChart percentage={sanctuaryData.healthStats.okay} color="orange" />
-                        <CircularChart percentage={sanctuaryData.healthStats.poor} color="red" />
+                        <CircularChart color="green" healthStatus="good" />
+                        <CircularChart color="orange" healthStatus="okay" />
+                        <CircularChart color="red" healthStatus="poor" />
                     </div>
                 </div>
             </div>
