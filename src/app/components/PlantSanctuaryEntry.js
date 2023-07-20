@@ -36,7 +36,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
     const handleSubmit = (e) => {
         e.preventDefault(); // at the beginning of a submit function
         const userEmail = localStorage.getItem('email');
-        const newUserPlant = { nickName: nickname, waterDays: wateringFrequency, commonName: plant.commonName, plantId: plant.id, image: plant.image };
+        const newUserPlant = { nickName: nickname, waterDays: wateringFrequency, commonName: plant.commonName, plantId: plant.plantId, image: plant.image };
         axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plants/new/${userEmail}`, newUserPlant)
             .then(response => {
                 console.log('response.data', response.data);
