@@ -11,21 +11,15 @@ const Signup = () => {
 
 	const [redirect, setRedirect] = useState(false);
 
-	const [firstName, setFirstName] = useState('');
-	const [lastName, setLastName] = useState('');
+	const [name, setName] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState(false);
 
 	// create the 
-	const handleFirstName = (e) => {
+	const handleName = (e) => {
 		// fill in code
-		setFirstName(e.target.value);
-	};
-
-	const handleLastName = (e) => {
-		// fill in code
-		setLastName(e.target.value);
+		setName(e.target.value);
 	};
 
 	const handleEmail = (e) => {
@@ -44,13 +38,13 @@ const Signup = () => {
 		e.preventDefault(); // at the beginning of a submit function
 
 		const newUser = {
-			firstName,
-			lastName,
+			name,
 			email,
 			password,
 		};
 		axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/users/signup`, newUser)
 			.then(response => {
+				console.log('response.data', response.data);
 				setRedirect(true);
 			})
 			.catch(error => {
@@ -91,20 +85,20 @@ const Signup = () => {
 				<div className="columns is-flex is-flex-direction-column box">
 					<div className="column">
 						<label for="name">Name</label>
-						<input className="input is-primary" type="text" placeholder="Enter Name" />
+						<input className="input is-primary" type="text" placeholder="Enter Name" onChange={handleName} />
 					</div>
 					<div className="column">
 						<label for="email">Email</label>
-						<input className="input is-primary" type="text" placeholder="Email address" />
+						<input className="input is-primary" type="text" placeholder="Email address" onChange={handleEmail} />
 					</div>
 					<div className="column">
 						<label for="Name">Password</label>
-						<input className="input is-primary" type="password" placeholder="Password" />
+						<input className="input is-primary" type="password" placeholder="Password" onChange={handlePassword} />
 
 
 					</div>
 					<div className="column">
-						<button className="button is-primary is-fullwidth" type="submit">Create an account</button>
+						<button className="button is-primary is-fullwidth" type="submit" onClick={handleSubmit}>Create an account</button>
 					</div>
 					<div className="has-text-centered">
 						<p> Already have an account?  <a href="/users/login" className="has-text-primary">Login</a>
@@ -113,8 +107,8 @@ const Signup = () => {
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
 
 {/* <div className="container">

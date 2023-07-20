@@ -46,7 +46,7 @@ export default function Login() {
 
     };
 
-    if (redirect) { router.push('/users/profile'); }
+    if (redirect) { router.push('/search'); }
     if (error) {
         return (
             <div>
@@ -73,15 +73,15 @@ export default function Login() {
                 <div className="columns is-flex is-flex-direction-column box">
                     <div className="column">
                         <label for="email">Email</label>
-                        <input className="input is-primary" type="text" placeholder="Email address" />
+                        <input className="input is-primary" type="text" placeholder="Email address" onChange={handleEmail} />
                     </div>
                     <div className="column">
                         <label for="Name">Password</label>
-                        <input className="input is-primary" type="password" placeholder="Password" />
+                        <input className="input is-primary" type="password" placeholder="Password" onChange={handlePassword} />
                         <a href="forget.html" className="is-size-7 has-text-primary">Forget password?</a>
                     </div>
                     <div className="column">
-                        <button className="button is-primary is-fullwidth" type="submit">Login</button>
+                        <button className="button is-primary is-fullwidth" type="submit" onClick={handleSubmit}>Login</button>
                     </div>
                     <div className="has-text-centered">
                         <p className="is-size-7"> Don't have an account? <a href="/users/signup" className="has-text-primary">Sign up</a>

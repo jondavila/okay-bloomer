@@ -11,6 +11,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
     const [wateringFrequency, setWateringFrequency] = useState('');
     const [pruningFrequency, setPruningFrequency] = useState('');
     const [sunlightFrequency, setSunlightFrequency] = useState('');
+    const router = useRouter();
 
     if (!plant || !guide) {
         return <div>Loading...</div>;
@@ -34,16 +35,18 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // at the beginning of a submit function
-        const userId = localStorage.getItem('userId');
-        const newUserPlant = { plantNickname: nickname, waterDays: wateringFrequency, plantOfficialName: plant.commonName, plantId: plant.id, plantImage: plant.image };
-        axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plants/new/${userId}`, newUserPlant)
+        const userEmail = localStorage.getItem('email');
+        const newUserPlant = { nickName: nickname, waterDays: wateringFrequency, plantOfficialName: plant.commonName, plantId: plant.id, plantImage: plant.image };
+        axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plants/new/${userEmail}`, newUserPlant)
             .then(response => {
                 console.log('response.data', response.data);
             })
             .catch(error => {
                 console.log('===> Error in adding plant to sanctuary', error);
             });
+        router.push('/sanctuary');
     };
+
 
     return (
         <>
