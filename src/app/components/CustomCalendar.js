@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import styles from "../customcalendar.module.css";
 
 const DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default function CustomCalendar() {
     const [currentMonth, setCurrentMonth] = useState(new Date());
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/sanctuary/tasks')
+            .then(response => {
+                const pendingTasks = response.data.filter(task => task.status === 'pending');
+                setTasks(pendingTasks);
+            })
+            .catch(error => {
+                console.log('Error fetching tasks data: ', error);
+            });
+    }, []);
 
     const changeMonth = (offset) => {
         setCurrentMonth((prevState) => {
@@ -57,7 +70,17 @@ export default function CustomCalendar() {
                             {week.map((day, index) => (
                                 <td key={day ? `day-${day}` : `empty-${index}`}>
                                     <div className={styles.day}>
-                                        <span>{day}</span>
+                                        <span>
+                                            {day}
+                                            {
+                                                tasks.some(task => {
+                                                    const taskDate = new Date(task.date);
+                                                    return taskDate.getDate() === day &&
+                                                        taskDate.getMonth() === currentMonth.getMonth() &&
+                                                        taskDate.getFullYear() === currentMonth.getFullYear();
+                                                }) && ' •'
+                                            }
+                                        </span>
                                     </div>
                                 </td>
                             ))}
