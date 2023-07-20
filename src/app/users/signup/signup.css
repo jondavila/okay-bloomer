@@ -1,0 +1,25 @@
+.button.is-primary {
+    background-color: #98e298;
+}
+
+.button.is-primary:hover {
+    background-color: #58a758;
+}
+
+.has-text-primary {
+    color: #98e298 !important;
+}
+
+.has-text-primary:hover {
+    color: #58a758 !important;
+}
+
+.is-primary.input,
+.is-primary.textarea {
+    border-color: #98e298;
+}
+
+.is-primary.input,
+.is-primary.textarea:active {
+    border-color: #58a758;
+}

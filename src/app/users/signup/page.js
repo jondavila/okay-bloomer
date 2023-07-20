@@ -3,8 +3,7 @@ import 'bulma/css/bulma.min.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-
-
+import './signup.css';
 
 const Signup = () => {
 	const router = useRouter();
@@ -37,8 +36,6 @@ const Signup = () => {
 		// fill in code
 		setPassword(e.target.value);
 	};
-
-
 
 	const handleSubmit = (e) => {
 		e.preventDefault(); // at the beginning of a submit function

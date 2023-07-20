@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import setAuthToken from '@/app/utils/setAuthToken';
 import jwtDecode from 'jwt-decode';
+import { Header } from '../../components/Header';
+import './login.css';
 
 export default function Login() {
     const router = useRouter();
@@ -50,16 +52,20 @@ export default function Login() {
     if (error) {
         return (
             <div>
-                <div className="card text-white bg-primary py-5 d-md-down-none" style={{ width: "44%" }}>
-                    <div className="card-body text-center">
-                        <div>
-                            <p>Email already exists</p>
-                            <br />
-                            <h2>Login</h2>
-                            <p>Sign In to your account</p>
-                            <a href="/users/login" type="button" className="btn btn-primary active mt-3">Login</a>
-                            <span>  </span>
-                            <a href="/users/signup" type="button" className="btn btn-secondary active mt-3">Signup</a>
+                <Header pageTitle="Login" profileImg="path/to/profile/image.jpg" />
+
+                <div>
+                    <div className="card text-white bg-primary py-5 d-md-down-none" style={{ width: "44%" }}>
+                        <div className="card-body text-center">
+                            <div>
+                                <p>Email already exists</p>
+                                <br />
+                                <h2>Login</h2>
+                                <p>Sign In to your account</p>
+                                <a href="/users/login" type="button" className="btn btn-primary active mt-3" style={{ color: '#98e298' }}>Login</a>
+                                <span>  </span>
+                                <a href="/users/signup" type="button" className="btn btn-secondary active mt-3" style={{ color: '#98e298' }}>Signup</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -84,11 +90,12 @@ export default function Login() {
                         <button className="button is-primary is-fullwidth" type="submit">Login</button>
                     </div>
                     <div className="has-text-centered">
-                        <p className="is-size-7"> Don't have an account? <a href="/users/signup" className="has-text-primary">Sign up</a>
+                        <p className="is-size-7"> Do not have an account? <a href="/users/signup" className="has-text-primary">Sign up</a>
                         </p>
                     </div>
                 </div>
             </div>
+
         </div>
     );
 }

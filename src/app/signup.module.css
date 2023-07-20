@@ -102,12 +102,13 @@ select:hover {
 
 
 .page {
-  margin-top:20px;
+  margin-top: 20px;
   background-color: #f2f3f8;
 }
+
 .card {
   margin-bottom: 1.5rem;
-  box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+  box-shadow: 0 1px 15px 1px #98e298;
 }
 
 .card {
@@ -122,4 +123,8 @@ select:hover {
   background-clip: border-box;
   border: 1px solid #e5e9f2;
   border-radius: .2rem;
+}
+
+.button.is-primary {
+  background-color: #98e298 !important;
 }
