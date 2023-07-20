@@ -83,6 +83,8 @@ export default function PlantPage() {
     //         task.id === taskId ? { ...task, status: 'completed' } : task
     //     ));
     // };
+    
+    if(!plant) return null;
 
     return (
         <div>
