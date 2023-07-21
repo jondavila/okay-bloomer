@@ -3,12 +3,12 @@ import axios from 'axios';
 import styles from '../plantfaq.module.css';
 
 export default function PlantFaq() {
-    const [faqs, setFaqs] = useState([]);
+    const [faqs, setFaqs] = useState(null);
     const [currentFaq, setCurrentFaq] = useState(null);
 
     // fetch plant faqs when the component mounts
     useEffect(() => {
-        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plantfaqs`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantfaqs`)
             .then(response => {
                 setFaqs(response.data.plantFaqs);
                 setCurrentFaq(response.data.plantFaqs[Math.floor(Math.random() * response.data.plantFaqs.length)]);
