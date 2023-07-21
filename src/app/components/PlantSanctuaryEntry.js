@@ -4,6 +4,7 @@ import 'bulma/css/bulma.min.css';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { ro } from '@faker-js/faker';
 
 
 export default function PlantSanctuaryEntry({ plant, guide }) {
@@ -12,31 +13,70 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
     const [pruningFrequency, setPruningFrequency] = useState('');
     const [sunlightFrequency, setSunlightFrequency] = useState('');
     const router = useRouter();
+    let defaultGuide = {};
 
-    if (!plant || !guide) {
+    if (!plant && !guide) {
         return <div>Loading...</div>;
     }
 
     const handleNickname = (e) => {
+        if(!e.target.value) {
+            setNickname('');
+        }
         setNickname(e.target.value);
     };
 
     const handleWateringFrequency = (e) => {
+        if(!e.target.value) {
+            setWateringFrequency(0);
+        }
         setWateringFrequency(e.target.value);
     };
 
     const handlePruningFrequency = (e) => {
+        if(!e.target.value) {
+            setPruningFrequency(0);
+        }
         setPruningFrequency(e.target.value);
     };
 
     const handleSunlightFrequency = (e) => {
+        if(!e.target.value) {
+            setSunlightFrequency(0);
+        }
         setSunlightFrequency(e.target.value);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault(); // at the beginning of a submit function
         const userEmail = localStorage.getItem('email');
-        const newUserPlant = { nickName: nickname, waterDays: wateringFrequency, commonName: plant.commonName, plantId: plant.plantId, image: plant.image };
+        if (!userEmail) {
+            router.push('/users/login');
+        }
+
+        let newUserPlant = {};
+
+        if(guide === defaultGuide) {
+            console.log('NOOOO GUIDEEEEE');
+            setWateringFrequency('0');
+            newUserPlant = {
+                nickName: nickname,
+                waterDays: wateringFrequency, // will be number
+                commonName: plant.commonName,
+                plantId: plant.plantId,
+                image: plant.image
+            }
+        } else {
+            newUserPlant = { 
+                nickName: nickname, 
+                waterDays: wateringFrequency, // will be string
+                commonName: plant.commonName, 
+                plantId: plant.plantId, 
+                image: plant.image 
+            };
+        }
+
+        console.log('newUserPlant', newUserPlant);
         axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/plants/new/${userEmail}`, newUserPlant)
             .then(response => {
                 console.log('response.data', response.data);
@@ -46,6 +86,15 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
             });
         router.push('/sanctuary');
     };
+
+    if(!guide) {
+        defaultGuide = {
+            wateringDescription: 'No watering guide available',
+            pruningDescription: 'No pruning guide available',
+            sunlightDescription: 'No sunlight guide available'
+        };
+        guide = defaultGuide;
+    }
 
 
     return (

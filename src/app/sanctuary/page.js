@@ -26,11 +26,11 @@ export default function Sanctuary() {
         axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${userEmail}`)
             .then(response => {
                 setUser(response.data.user);
-                setPlants(response.data.user.plants[0].userPlants);
-                setJournalEntry(response.data.user.plants[0].journalEntries);
-                console.log('JON IS WEARING LADIES UNDERWEAR', response.data);
+                // setPlants(response.data.user.plants[0].userPlants);
+                // setJournalEntry(response.data.user.plants[0].journalEntries);
+                console.log('JON IS WEARING LADIES UNDERWEAR', response.data.user);
                 setLoading(false);
-                console.log('CALEB WEARS BRAS', plants);
+                // console.log('CALEB WEARS BRAS', plants);
             })
             .catch(error => {
                 console.log('Error fetching plant data: ', error);
