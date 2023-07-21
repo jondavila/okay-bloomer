@@ -1,8 +1,8 @@
 'use client';
 import React from "react";
 import 'bulma/css/bulma.min.css';
-import Header from "../../components/Header";
-import SearchBar from "../../components/SearchBar";
+import Header from "@/app/components/Header";
+// import SearchBar from "./components/SearchBar";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import PlantCardGrid from "../../components/PlantCardGrid";
@@ -36,7 +36,7 @@ export default function SearchPage() {
             <div className="container mt-5">
                 <div className="columns is-centered has-text-centered">
                     <div className="column is-five-sixths">
-                        <SearchBar />
+                        {/* <SearchBar /> */}
                         <p className="has-text-weight-bold is-size-4 mt-4 mb-6">Or start by selecting your plant family:</p>
                         <PlantCardGrid plantCardsArray={rows} />
                     </div>

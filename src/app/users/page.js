@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import UserTable from './UserTable';
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log('error error', error);
         // Handle error if needed
       });
   }, []);

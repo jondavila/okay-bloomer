@@ -18,7 +18,7 @@ const PlantCarePage = () => {
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
 
-        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/plantId`) // insert api url
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/${plantId}`) // insert api url
             .then((response) => {
                 const foundPlant = response.data.plantDetail;
                 console.log('NAME IT SOMETHING ELSE IDK', foundPlant);
@@ -39,6 +39,8 @@ const PlantCarePage = () => {
                 console.log('error: ', error);
             });
     }, []);
+
+    if (!plant && !guide) return (<div>Loading...</div>);
 
     return (
         <div>
