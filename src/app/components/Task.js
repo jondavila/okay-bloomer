@@ -22,11 +22,15 @@ export default function Task({ plant, taskArray }) {
         <div className="card">
             <div className="card-content">
                 {status === 'pending' && (
-                    <input type="checkbox" onClick={handleCheckboxChange} />
+                    <>
+                        <input type="checkbox" onClick={handleCheckboxChange} />
+                        <p>Time to {taskArray[0].taskName} {plant.plantNickname}</p>
+                    </>
                 )}
-                <span>{taskArray[0].date}</span>
+
+                {/* <span>{taskArray[0].date}</span>
                 <span>{taskArray[0].taskName}</span>
-                <span>{plant.plantNickname}</span>
+                <span>{plant.plantNickname}</span> */}
                 {/* the plantnickname is currently not acconted for in backend. */}
             </div>
         </div>
