@@ -1,0 +1,7 @@
+.card {
+    height: 200px;
+    /* can alter height here */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
