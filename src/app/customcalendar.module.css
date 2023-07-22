@@ -42,3 +42,11 @@
     cursor: pointer;
     font-size: 1em;
 }
+
+.blueDot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+    border-radius: 50%;
+}

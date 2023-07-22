@@ -39,7 +39,9 @@ const Header = ({ pageTitle }) => {
               <Link href="/sanctuary">
                 <p className="dropdown-item">Sanctuary</p>
               </Link>
-              {/* Add as many routes as you want */}
+              <Link href="/">
+                <p className="dropdown-item">Search</p>
+              </Link>
             </div>
           </div>
         </div>

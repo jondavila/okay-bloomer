@@ -4,9 +4,17 @@ import styles from "../customcalendar.module.css";
 
 const DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-export default function CustomCalendar() {
+export default function CustomCalendar({ calendarData, tasks }) {
     const [currentMonth, setCurrentMonth] = useState(new Date());
-    const [tasks, setTasks] = useState([]);
+    const isTaskForDay = (day, tasks, currentMonth) => {
+        return tasks.some(task => {
+            const taskDate = new Date(task.date);
+            return taskDate.getFullYear() === currentMonth.getFullYear()
+                && taskDate.getMonth() === currentMonth.getMonth()
+                && taskDate.getDate() === day;
+        });
+    };
+
 
     useEffect(() => {
         axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/tasks`)
@@ -72,14 +80,7 @@ export default function CustomCalendar() {
                                     <div className={styles.day}>
                                         <span>
                                             {day}
-                                            {
-                                                tasks.some(task => {
-                                                    const taskDate = new Date(task.date);
-                                                    return taskDate.getDate() === day &&
-                                                        taskDate.getMonth() === currentMonth.getMonth() &&
-                                                        taskDate.getFullYear() === currentMonth.getFullYear();
-                                                }) && ' •'
-                                            }
+                                            {isTaskForDay(day, tasks, currentMonth) && <span className={styles.blueDot}></span>}
                                         </span>
                                     </div>
                                 </td>
@@ -90,4 +91,5 @@ export default function CustomCalendar() {
             </table>
         </div>
     );
+
 }

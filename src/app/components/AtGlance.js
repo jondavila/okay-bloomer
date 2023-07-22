@@ -14,24 +14,25 @@ export default function AtAGlance({ plants }) {
         calendarData: [],
     });
 
-    // useEffect(() => {
-    //     axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/tasks`)
-    //         .then(response => {
-    //             // filter the tasks to get only the pending tasks
-    //             const pendingTasks = response.data.filter(task => task.status === 'pending');
-    //             // sorting the tasks based on dueDate and only taking the first five
-    //             const sortedTasks = pendingTasks.sort((a, b) => new Date(a.date) - new Date(b.date)).slice(0, 5);
+    useEffect(() => {
+        let tasks = [];
+        if (plants) {
+            plants.forEach((plant) => {
+                const pendingTasks = plant.plantTasks.filter(task => task.status === 'pending');
+                pendingTasks.forEach(task => tasks.push({ plant, task }));
+            });
+            // Sort tasks by date (ascending)
+            tasks.sort((a, b) => new Date(a.task.date) - new Date(b.task.date));
+            // Limit to top 15 tasks
+            tasks = tasks.slice(0, 15);
+            setSanctuaryData(prevState => ({ ...prevState, tasks: tasks }));
+        }
+    }, [plants]); // Making useEffect dependent on plants so it reruns when plants data changes
 
-    //             setSanctuaryData(prevState => ({ ...prevState, tasks: sortedTasks }));
-    //         })
-    //         .catch(error => {
-    //             console.log('Error fetching sanctuary data: ', error);
-    //         });
-    // }, []);
 
-    // if (!sanctuaryData) {
-    //     return <div>Loading sanctuary data...</div>;
-    // }
+    if (!sanctuaryData) {
+        return <div>Loading sanctuary data...</div>;
+    }
 
     return (
         <div>
@@ -40,7 +41,7 @@ export default function AtAGlance({ plants }) {
             <div className="card">
                 <div className="card-content">
                     <h3>Calendar View</h3>
-                    <CustomCalendar calendarData={sanctuaryData.calendarData} />
+                    <CustomCalendar calendarData={sanctuaryData.calendarData} tasks={sanctuaryData.tasks} />
                 </div>
             </div>
             <br />
