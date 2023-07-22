@@ -5,6 +5,9 @@ import axios from "axios";
 import Header from "../components/Header";
 import PlantFavoritesGrid from "../components/PlantFavoritesGrid";
 import UserPlantCardGrid from "../components/UserPlantCardGrid";
+import EditNameModal from "../components/EditNameModal";
+
+
 
 export default function Profile() {
     const [user, setUser] = useState(null);
@@ -12,6 +15,20 @@ export default function Profile() {
     const [plants, setPlants] = useState([]);
     const [name, setName] = useState([]);
     const [email, setEmail] = useState([]);
+    const [isActive, setIsActive] = useState(false);
+
+    const handleNameSave = (newName) => {
+        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${user._id}`, {
+            name: newName,  // or lastName, depending on how you store names in your application
+        })
+            .then(response => {
+                console.log('User name updated successfully: ', response.data);
+                setName(newName);
+            })
+            .catch(error => {
+                console.log('Error updating user name: ', error);
+            });
+    };
 
     useEffect(() => {
         let userEmail = localStorage.getItem('email');
@@ -38,7 +55,7 @@ export default function Profile() {
 
     return (
         <div>
-            <Header pageTitle="Profile" profileImg="/path_to_profile_image.jpg" />
+            <Header pageTitle="Profile" />
             <br />
             <div className="container">
                 <div className="columns is-multiline">
@@ -51,7 +68,8 @@ export default function Profile() {
                                 <p className="title is-4 has-text-centered">{name}</p>
                                 <p className="has-text-centered">email: {email}</p>
                                 <div className="buttons is-centered mt-3">
-                                    <button className="button is-primary is-small">Edit</button>
+                                    <button className="button is-primary is-small" onClick={() => setIsActive(true)}>Edit</button>
+                                    <EditNameModal isActive={isActive} setIsActive={setIsActive} currentName={name} onSave={handleNameSave} />
                                     <a href='/sanctuary'><button className="button is-link is-small">My Sanctuary</button></a>
                                 </div>
                             </div>
