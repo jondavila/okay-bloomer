@@ -3,7 +3,8 @@ import React from 'react';
 
 export default function SingleTask({ task, onComplete }) {
     const handleTaskCompletion = () => {
-        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks/${task._id}`, { status: 'completed' })
+        const userEmail = localStorage.getItem('email');
+        axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks/${userEmail}/${task._id}`, { status: 'completed' })
             .then(response => {
                 if (response.status === 200) {
                     onComplete(task._id);
