@@ -18,6 +18,7 @@ export default function PlantPage() {
     const [upcomingTasks, setUpcomingTasks] = useState([]);
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [name, setName] = useState([]);
 
 
     const handleTaskCompletion = (taskId) => {
@@ -45,6 +46,8 @@ export default function PlantPage() {
                 const targetPlant = response.data.user.plants[0].userPlants.find(plant => plant.plantId.toString() === plantId);
                 if (targetPlant) {
                     setUpcomingTasks(targetPlant.plantTasks);
+                    setName(targetPlant.plantNickname);
+                    console.log("found the name===>", targetPlant.plantNickname)
                     console.log('Found the tasks!!', targetPlant.plantTasks);
                 } else {
                     console.log('No plant with the given plantId found');
@@ -86,7 +89,7 @@ export default function PlantPage() {
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <p className="title is-4">{ }</p>
-                                <p className="subtitle is-6">{plant.commonName}</p>
+                                <p className="subtitle is-6">{name}</p>
                                 <div className="card-image">
                                     <figure className="image is-4by3">
                                         <img src={plant.image} alt="Placeholder image" />

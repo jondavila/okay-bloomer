@@ -1,5 +1,6 @@
 import React from 'react';
 import SingleTask from './SingleTask';
+import 'bulma/css/bulma.min.css';
 
 export default function PlantUpcomingTasks({ tasks, onTaskComplete }) {
     const upcomingTasks = tasks
@@ -13,7 +14,7 @@ export default function PlantUpcomingTasks({ tasks, onTaskComplete }) {
 
     return (
         <div>
-            <h3>Upcoming Tasks:</h3>
+            <h3 style={{ textAlign: 'center', marginBottom: '20px' }}>Upcoming Tasks:</h3>
             {upcomingTasks.map(task => (
                 <SingleTask key={task._id} task={task} onComplete={onTaskComplete} />
             ))}
