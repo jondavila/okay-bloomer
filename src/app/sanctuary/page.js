@@ -10,6 +10,7 @@ import PlantJournal from '../components/PlantJournal';
 import PlantFaq from '../components/PlantFaq';
 import UserPlantCardGrid from '../components/UserPlantCardGrid';
 import TaskGrid from '../components/TaskGrid';
+import 'animate.css';
 
 
 
@@ -48,28 +49,32 @@ export default function Sanctuary() {
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
             <div className="container">
                 <div className="columns is-multiline">
-                    <div className="column is-3">
+                    <div className={`column is-3 animate__animated animate__fadeInLeft`}>
                         <br />
-                        <div className="card">
+                        <div className={`card ${styles.myCard}`}>
                             <div className="card-content">
                                 <AtAGlance plants={plants} />
                             </div>
                         </div>
                     </div>
-                    <div className="column is-6 mt-5">
-                        <TaskGrid plantArray={plants} />
-                        <p className="mt-2">My Plants:</p>
-                        <UserPlantCardGrid plantCardsArray={plants} />
+                    <div className={`column is-6 mt-5`}>
+                        <div className="animate__animated animate__fadeInDown">
+                            <TaskGrid plantArray={plants} />
+                        </div>
+                        <div className="animate__animated animate__fadeInUp">
+                            <p className="mt-2">My Plants:</p>
+                            <UserPlantCardGrid plantCardsArray={plants} />
+                        </div>
                     </div>
-                    <div className="column is-3">
+                    <div className={`column is-3 animate__animated animate__fadeInRight`}>
                         <br />
-                        <div className="card">
+                        <div className={`card ${styles.myCard}`}>
                             <div className="card-content">
                                 <PlantFaq />
                             </div>
                         </div>
                         <br />
-                        <div className="card">
+                        <div className={`card ${styles.myCard} animate__animated animate__fadeInUp`}>
                             <div className="card-content">
                                 <PlantJournal />
                             </div>
@@ -79,4 +84,6 @@ export default function Sanctuary() {
             </div>
         </>
     );
+
+
 }

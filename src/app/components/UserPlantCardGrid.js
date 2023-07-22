@@ -2,7 +2,7 @@ import UserPlantCard from './UserPlantCard';
 import 'bulma/css/bulma.min.css';
 
 
-export default function UserPlantCardGrid({ plantCardsArray }) {
+export default function UserPlantCardGrid({ plantCardsArray, ...props }) {
     let rows = [];
     if (plantCardsArray) {
         plantCardsArray.forEach((plant) => {
@@ -15,7 +15,7 @@ export default function UserPlantCardGrid({ plantCardsArray }) {
         });
     }
     return (
-        <div>
+        <div className={props.className}>
             <section className="container">
                 <div className="columns features is-multiline">
                     {rows}
