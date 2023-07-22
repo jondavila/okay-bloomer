@@ -30,3 +30,17 @@
     font-size: 1.5em !important;
     font-family: 'Preahvihear', sans-serif;
 }
+
+.menuButton {
+    border: none;
+    background: transparent;
+}
+
+.dropdown.is-right .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-content {
+    text-align: right;
+}
