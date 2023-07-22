@@ -59,6 +59,7 @@ export default function Sanctuary() {
                     </div>
                     <div className={`column is-6 mt-5`}>
                         <div className="animate__animated animate__fadeInDown">
+                            <p className="mt-2">Upcoming Tasks:</p>
                             <TaskGrid plantArray={plants} />
                         </div>
                         <div className="animate__animated animate__fadeInUp">

@@ -13,7 +13,7 @@ export default function PlantUpcomingTasks({ tasks, onTaskComplete }) {
 
     return (
         <div>
-            <h3>Upcoming Tasks</h3>
+            <h3>Upcoming Tasks:</h3>
             {upcomingTasks.map(task => (
                 <SingleTask key={task._id} task={task} onComplete={onTaskComplete} />
             ))}
