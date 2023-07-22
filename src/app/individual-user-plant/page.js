@@ -49,6 +49,7 @@ export default function PlantPage() {
                     setName(targetPlant.plantNickname);
                     console.log("found the name===>", targetPlant.plantNickname)
                     console.log('Found the tasks!!', targetPlant.plantTasks);
+                    console.log('I want to see upcoming tasks ==>', upcomingTasks);
                 } else {
                     console.log('No plant with the given plantId found');
                 }
@@ -78,7 +79,7 @@ export default function PlantPage() {
                         </div>
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
-                                {/* <CareRecord tasks={plantId} /> */}
+                                <CareRecord tasks={upcomingTasks} />
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
