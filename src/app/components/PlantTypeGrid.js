@@ -5,7 +5,7 @@ export default function PlantTypeGrid({ plantTypesArray }) {
     let rows = [];
     for (let i = 0; i < plantTypesArray.length; i++) {
         let type = plantTypesArray[i];
-        rows.push(<PlantType key={i.toString()} type={type} />);
+        rows.push(<PlantType key={i.toString()} type={type} index={i} />);
     }
     return (
         <div>
