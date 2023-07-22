@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bulma/css/bulma.min.css'
+import CompletedTask from './CompletedTask';  // Add this line
 
 export default function CareRecord({ tasks }) {
     const pastTasks = tasks
@@ -15,10 +16,7 @@ export default function CareRecord({ tasks }) {
         <div>
             <h3>Care Record</h3>
             {pastTasks.map((task) => (
-                <div key={task}>
-                    <span>{task.date}</span>
-                    <span>{task.status}</span>
-                </div>
+                <CompletedTask key={task._id} task={task} />  // Change this line
             ))}
         </div>
     );
