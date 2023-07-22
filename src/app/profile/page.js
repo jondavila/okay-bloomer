@@ -39,7 +39,7 @@ export default function Profile() {
             <div className="container">
                 <div className="columns is-multiline">
                     <div className="column is-3">
-                        <div className="card profile-card">
+                        <div className="card profile-card animate__animated animate__fadeInLeft">
                             <div className="card">
                                 <figure className="image is-140x140 is-rounded" style={{ padding: '20px' }} >
                                     <img className="is-rounded" src="/profile.jpg" alt="Profile Picture" />
