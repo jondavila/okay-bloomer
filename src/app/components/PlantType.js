@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import 'bulma/css/bulma.min.css';
 import { useRouter } from 'next/navigation';
+import styles from "../planttype.module.css";
 
 export default function PlantType({ type }) {
     const router = useRouter();
