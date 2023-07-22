@@ -16,7 +16,7 @@ export default function TaskGrid({ plantArray }) {
         });
     }
     return (
-        <div className="scrollable-content" style={{ maxHeight: '250px', overflow: 'auto', whiteSpace: 'nowrap', textOverflow: 'ellipsis', }}>
+        <div className="scrollable-content" style={{ maxHeight: '150px', overflow: 'auto', whiteSpace: 'nowrap', textOverflow: 'ellipsis', }}>
             {rows}
         </div >
 
