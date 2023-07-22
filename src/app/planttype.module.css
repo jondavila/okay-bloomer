@@ -9,6 +9,8 @@
     /* allign items horizontally in the middle */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     /* smooth transition */
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    color: #006400 !important;
 }
 
 .card:hover {

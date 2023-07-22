@@ -2,10 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from '../header.module.css';
+import 'animate.css';
 
 const Header = ({ pageTitle, profileImg }) => {
   return (
-    <nav className={`navbar ${styles.myNavbar}`} role="navigation" aria-label="main navigation">
+    <nav className={`navbar ${styles.myNavbar} animate__animated animate__fadeIn`} role="navigation" aria-label="main navigation" style={{ animationDelay: '0.2s' }}>
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/">
           <img src="./logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px', fontFamily: 'Preahvihear, sans-serif' }} />
