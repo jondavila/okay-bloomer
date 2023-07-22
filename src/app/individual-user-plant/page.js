@@ -16,32 +16,52 @@ export default function PlantPage() {
     const [user, setUser] = useState(null);
     const [pastTasks, setPastTasks] = useState([]);
     const [upcomingTasks, setUpcomingTasks] = useState([]);
+    const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [name, setName] = useState([]);
+
+
+    const handleTaskCompletion = (taskId) => {
+        setUpcomingTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+    };
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
         const email = localStorage.getItem('email');
-        
+        const userPlantId = localStorage.getItem('plantId');
+
+
         axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/plantDetails/${plantId}`)
             .then(response => {
-                console.log('response =================', response.data);
+                console.log('plant details =================', response.data);
                 setPlant(response.data.plantDetail);
-
             })
             .catch(error => {
                 console.log('Error fetching plant: ', error);
-            });   
+            });
 
         axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${email}`)
-        .then(response => {
-            console.log('boogie woogie =================', response.data);
-            // setUser(response.data);
-        })
-        .catch(error => {
-            console.log('Error fetching user: ', error);
-        });
+            .then(response => {
+                console.log('boogie woogie =================', response.data);
+                const targetPlant = response.data.user.plants[0].userPlants.find(plant => plant.plantId.toString() === plantId);
+                if (targetPlant) {
+                    setUpcomingTasks(targetPlant.plantTasks);
+                    setName(targetPlant.plantNickname);
+                    console.log("found the name===>", targetPlant.plantNickname)
+                    console.log('Found the tasks!!', targetPlant.plantTasks);
+                } else {
+                    console.log('No plant with the given plantId found');
+                }
+                setLoading(false);
+            })
+            .catch(error => {
+                console.log('Error fetching user or plant data: ', error);
+                setLoading(false);
+            });
     }, []);
 
-    if(!plant) return (<div>Loading...</div>);
+
+    if (!plant) return (<div>Loading...</div>);
 
     console.log('plant', plant);
 
@@ -69,7 +89,7 @@ export default function PlantPage() {
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <p className="title is-4">{ }</p>
-                                <p className="subtitle is-6">{plant.commonName}</p>
+                                <p className="subtitle is-6" style={{ fontSize: '2em', fontFamily: 'Arial, sans-serif', fontWeight: 'bold', color: '#333' }}>{name}</p>
                                 <div className="card-image">
                                     <figure className="image is-4by3">
                                         <img src={plant.image} alt="Placeholder image" />
@@ -91,7 +111,7 @@ export default function PlantPage() {
                     <div className="column is-3">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
-                                {/* <PlantUpcomingTasks tasks={upcomingTasks} onTaskComplete={handleTaskCompletion} /> */}
+                                <PlantUpcomingTasks tasks={upcomingTasks} onTaskComplete={handleTaskCompletion} />
                             </div>
                         </div>
                         <br />

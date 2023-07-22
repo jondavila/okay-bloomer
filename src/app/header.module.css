@@ -14,7 +14,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #98e298;
+    background-color: #98e298 !important;
     font-family: 'Preahvihear', sans-serif;
 }
 
@@ -29,4 +29,18 @@
     margin-right: 4em;
     font-size: 1.5em !important;
     font-family: 'Preahvihear', sans-serif;
+}
+
+.menuButton {
+    border: none !important;
+    background: transparent !important;
+}
+
+.dropdown.is-right .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.dropdown-content {
+    text-align: right;
 }

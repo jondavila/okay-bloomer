@@ -1,0 +1,21 @@
+.userPlantCardColumn {
+    min-width: 180px !important;
+    max-width: 180px !important;
+    margin: 1em;
+}
+
+
+.columns {
+    justify-content: center !important;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.card-content {
+    width: 100% !important;
+}

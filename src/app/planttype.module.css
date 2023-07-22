@@ -1,0 +1,20 @@
+.card {
+    height: 200px;
+    /* can alter height here */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align items vertically in the middle */
+    align-items: center;
+    /* allign items horizontally in the middle */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* smooth transition */
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    color: #006400 !important;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* enlarge the card */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}

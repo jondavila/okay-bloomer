@@ -8,8 +8,7 @@ import axios from 'axios';
 import PlantType from "./components/PlantType";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
-
-
+import styles from "./searchpage.module.css";
 
 export default function SearchPage() {
     const [rows, setRows] = useState([]);
@@ -28,11 +27,11 @@ export default function SearchPage() {
     return (
         <>
             <Header pageTitle="Plant Sanctuary" profileImg="/path_to_profile_image.jpg" />
-            <div className="container mt-5">
+            <div className={`container mt-5 ${styles.gradientBg}`}>
                 <div className="columns is-centered has-text-centered">
                     <div className="column is-five-sixths">
                         {/* <SearchBar /> */}
-                        <p className="has-text-weight-bold is-size-4 mt-4 mb-6">Start by selecting your plant family:</p>
+                        <p className="has-text-weight-bold is-size-4 mt-4 mb-6 animate__animated animate__fadeIn" style={{ animationDelay: '0.4s', color: "#006400" }}>Start by selecting your plant family:</p>
                         <PlantTypeGrid plantTypesArray={rows} />
                     </div>
                 </div>

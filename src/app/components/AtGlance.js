@@ -46,7 +46,7 @@ export default function AtAGlance({ plants }) {
             <br />
             <div className="card">
                 <div className="card-content">
-                    <h3>Health Stats</h3>
+                    <h3>Sanctuary Health Status:</h3>
                     <div className={styles.flexWrapper}>
                         <CircularChart color="green" healthStatus="good" />
                         <CircularChart color="orange" healthStatus="okay" />

@@ -3,38 +3,37 @@ import React from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
 import 'bulma/css/bulma.min.css';
+import styles from "../userplantcard.module.css";
 import { useRouter } from 'next/navigation';
+import 'animate.css';
 
 
-export default function UserPlantCard(plant) {
+export default function UserPlantCard({ plant }) {
     const router = useRouter();
-    console.log('plant', plant.plant.plantImage);
-
-
 
     function handleSelect() {
-        localStorage.setItem('plant-id', plant.plant.plantId);
+        localStorage.setItem('plant-id', plant.plantId);
         router.push('/individual-user-plant');
     }
 
     return (
-        <div class="column is-4">
-            <a onClick={() => handleSelect()}>
-                <div class="card is-shady">
-                    {plant.plant.plantImage &&
-                        <div class="card-image">
-                            <figure class="image is-4by3">
-                                <img src={plant.plant.plantImage} alt={`${plant.plant.plantOfficialName} Image`} />
+        <div className={`column is-4 animate__animated animate__fadeInUp ${styles.userPlantCardColumn}`}>
+            <a onClick={handleSelect}>
+                <div className={`${styles.card} card is-shady`}>
+                    {plant.plantImage &&
+                        <div className="card-image">
+                            <figure className="image is-4by3">
+                                <img src={plant.plantImage} alt={`${plant.plantOfficialName} Image`} />
                             </figure>
                         </div>
                     }
-                    <div class="card-content">
-                        <div class="content">
-                            {plant.plant.plantNickname &&
-                                <h4 className='is-size-4 has-text-weight-bold'>{plant.plant.plantNickname}</h4>
+                    <div className="card-content">
+                        <div className="content">
+                            {plant.plantNickname &&
+                                <h4 className='is-size-4 has-text-weight-bold'>{plant.plantNickname}</h4>
                             }
-                            {plant.plant.plantOfficialName &&
-                                <h4 className='is-size-6 is-italic'>{plant.plant.plantOfficialName}</h4>
+                            {plant.plantOfficialName &&
+                                <h4 className='is-size-6 is-italic'>{plant.plantOfficialName}</h4>
                             }
                         </div>
                     </div>
@@ -43,6 +42,4 @@ export default function UserPlantCard(plant) {
         </div>
     );
 };
-
-
 

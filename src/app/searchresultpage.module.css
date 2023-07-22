@@ -1,0 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Preahvihear&display=swap');
+
+.gradientBackground {
+    background: linear-gradient(120deg, #98e298, white);
+}
