@@ -89,7 +89,7 @@ export default function PlantPage() {
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <p className="title is-4">{ }</p>
-                                <p className="subtitle is-6">{name}</p>
+                                <p className="subtitle is-6" style={{ fontSize: '2em', fontFamily: 'Arial, sans-serif', fontWeight: 'bold', color: '#333' }}>{name}</p>
                                 <div className="card-image">
                                     <figure className="image is-4by3">
                                         <img src={plant.image} alt="Placeholder image" />

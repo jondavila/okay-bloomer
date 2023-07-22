@@ -20,7 +20,7 @@ export default function Sanctuary() {
     const [journalEntry, setJournalEntry] = useState([]);
     const [user, setUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
-    const [name, setName] = useState([]);
+
 
 
     useEffect(() => {

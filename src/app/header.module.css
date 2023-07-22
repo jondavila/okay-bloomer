@@ -14,7 +14,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #98e298;
+    background-color: #98e298 !important;
     font-family: 'Preahvihear', sans-serif;
 }
 
@@ -32,8 +32,8 @@
 }
 
 .menuButton {
-    border: none;
-    background: transparent;
+    border: none !important;
+    background: transparent !important;
 }
 
 .dropdown.is-right .dropdown-menu {
