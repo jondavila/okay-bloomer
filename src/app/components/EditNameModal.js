@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export default function EditNameModal({ currentName, onSave }) {
+
+export default function EditNameModal({ isActive, setIsActive, currentName, onSave }) {
     const [newName, setNewName] = useState(currentName);
-    const [isActive, setIsActive] = useState(false);
 
     const handleSave = () => {
         onSave(newName);

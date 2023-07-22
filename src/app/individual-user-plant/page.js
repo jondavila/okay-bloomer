@@ -77,7 +77,7 @@ export default function PlantPage() {
             <Header pageTitle="My Plant" profileImg="/path_to_profile_image.jpg" />
             <div className={styles.container}>
                 <div className="columns">
-                    <div className="column is-3">
+                    <div className="column is-3 animate__animated animate__fadeInLeft">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <HealthRating tasks={pastTasks} />
@@ -92,7 +92,7 @@ export default function PlantPage() {
                             <button className="button is-danger">Remove Plant</button>
                         </div>
                     </div>
-                    <div className="column is-6">
+                    <div className="column is-6 animate__animated animate__fadeInDown">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <p className="title is-4">{ }</p>
@@ -115,7 +115,7 @@ export default function PlantPage() {
                         {/* </div> */}
                         {/* </div> */}
                     </div>
-                    <div className="column is-3">
+                    <div className="column is-3 animate__animated animate__fadeInRight">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <PlantUpcomingTasks tasks={upcomingTasks} onTaskComplete={handleTaskCompletion} />

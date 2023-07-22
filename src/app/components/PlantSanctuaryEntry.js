@@ -20,28 +20,28 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
     }
 
     const handleNickname = (e) => {
-        if(!e.target.value) {
+        if (!e.target.value) {
             setNickname('');
         }
         setNickname(e.target.value);
     };
 
     const handleWateringFrequency = (e) => {
-        if(!e.target.value) {
+        if (!e.target.value) {
             setWateringFrequency(0);
         }
         setWateringFrequency(e.target.value);
     };
 
     const handlePruningFrequency = (e) => {
-        if(!e.target.value) {
+        if (!e.target.value) {
             setPruningFrequency(0);
         }
         setPruningFrequency(e.target.value);
     };
 
     const handleSunlightFrequency = (e) => {
-        if(!e.target.value) {
+        if (!e.target.value) {
             setSunlightFrequency(0);
         }
         setSunlightFrequency(e.target.value);
@@ -56,7 +56,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
 
         let newUserPlant = {};
 
-        if(guide === defaultGuide) {
+        if (guide === defaultGuide) {
             console.log('NOOOO GUIDEEEEE');
             setWateringFrequency('0');
             newUserPlant = {
@@ -67,12 +67,12 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
                 image: plant.image
             }
         } else {
-            newUserPlant = { 
-                nickName: nickname, 
+            newUserPlant = {
+                nickName: nickname,
                 waterDays: wateringFrequency, // will be string
-                commonName: plant.commonName, 
-                plantId: plant.plantId, 
-                image: plant.image 
+                commonName: plant.commonName,
+                plantId: plant.plantId,
+                image: plant.image
             };
         }
 
@@ -87,7 +87,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
         router.push('/sanctuary');
     };
 
-    if(!guide) {
+    if (!guide) {
         defaultGuide = {
             wateringDescription: 'No watering guide available',
             pruningDescription: 'No pruning guide available',
@@ -99,7 +99,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
 
     return (
         <>
-            <div className="columns is-multiline is-centered">
+            <div className="columns is-multiline is-centered animate__animated animate__fadeInDown">
                 <div className="column is-4">
                     <div className="card has-text-centered">
                         <div className="field">
@@ -194,7 +194,7 @@ export default function PlantSanctuaryEntry({ plant, guide }) {
                 </div>
             </div>
             <br />
-            <div className="has-text-centered">
+            <div className="has-text-centered animate__animated animate__fadeInDown">
                 <div className="field">
                     <div className="control">
                         <button className="button is-primary" onClick={handleSubmit}>Add to Collection</button>
