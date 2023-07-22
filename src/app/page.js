@@ -8,6 +8,7 @@ import axios from 'axios';
 import PlantType from "./components/PlantType";
 import { useEffect, useState } from "react";
 import { useRouter } from 'next/router';
+import styles from "./searchpage.module.css";
 
 
 
