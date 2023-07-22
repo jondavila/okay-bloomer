@@ -22,8 +22,14 @@ export default function PlantPage() {
 
 
     const handleTaskCompletion = (taskId) => {
-        setUpcomingTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+        const completedTask = upcomingTasks.find(task => task._id === taskId);
+        if (completedTask) {
+            completedTask.status = 'completed'; // or 'missed', depending on your logic
+            setPastTasks(prevTasks => [...prevTasks, completedTask]);
+            setUpcomingTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
+        }
     };
+
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
@@ -79,7 +85,7 @@ export default function PlantPage() {
                         </div>
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
-                                <CareRecord tasks={upcomingTasks} />
+                                <CareRecord tasks={pastTasks} />
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
