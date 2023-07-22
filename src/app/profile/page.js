@@ -4,22 +4,32 @@ import 'bulma/css/bulma.min.css';
 import axios from "axios";
 import Header from "../components/Header";
 import PlantFavoritesGrid from "../components/PlantFavoritesGrid";
+import UserPlantCardGrid from "../components/UserPlantCardGrid";
 
 export default function Profile() {
     const [user, setUser] = useState(null);
+    const [isLoading, setLoading] = useState(true);
+    const [plants, setPlants] = useState([]);
 
     useEffect(() => {
-        let email = localStorage.getItem('email');
-        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${email}`)
+        let userEmail = localStorage.getItem('email');
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/sanctuary/user/${userEmail}`)
             .then(response => {
                 console.log('boogie woogie =================', response.data);
-                setUser(response.data);
+                setUser(response.data.user);
+                setPlants(response.data.user.plants[0].userPlants);
+                setLoading(false);
             })
             .catch(error => {
                 console.log('Error fetching user: ', error);
+                setLoading(false);
             });
     }, []);
 
+    if (isLoading) {
+        return <div>Loading Your Profile...</div>;
+        // will add some animation or sophisitication here later
+    }
     // if (!user) return (<div>Loading...</div>)
 
     return (
@@ -45,15 +55,18 @@ export default function Profile() {
                     <div className="column is-9">
                         <div className="card">
                             <div className="card-content has-text-centered">
-                                <h2>My Plant Babies (Favorites)</h2>
+                                <h2>My Plant Babies:</h2>
                                 <br />
                                 <div className="grid-container">
-                                    <PlantFavoritesGrid />
+                                    {/* <PlantFavoritesGrid /> */}
+                                    {/* ^letting the user select only favorite plants to display can be a stretch goal */}
+                                    <UserPlantCardGrid plantCardsArray={plants} />
                                 </div>
                             </div>
-                            <div className="buttons is-centered">
+                            {/* <div className="buttons is-centered">
                                 <button className="button is-primary is-small">Edit</button>
-                            </div>
+                            </div> */}
+                            {/* ^again, the edit button for plant list can be a stretch goal */}
                         </div>
                         <br />
                     </div>
