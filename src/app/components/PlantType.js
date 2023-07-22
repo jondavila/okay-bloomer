@@ -15,7 +15,7 @@ export default function PlantType({ type }) {
     return (
         <div className="column is-3">
             <a onClick={() => handleSelect()}>
-                <div className="card is-shady">
+                <div className={styles.card + " card is-shady"}>
                     <div className="card-content">
                         <div className="content">
                             <h1>{type}</h1>

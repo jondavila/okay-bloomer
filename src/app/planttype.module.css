@@ -3,5 +3,8 @@
     /* can alter height here */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    /* align items vertically in the middle */
+    align-items: center;
+    /* allign items horizontally in the middle */
 }
