@@ -9,7 +9,7 @@ const Header = ({ pageTitle, profileImg }) => {
     <nav className={`navbar ${styles.myNavbar} animate__animated animate__fadeIn`} role="navigation" aria-label="main navigation" style={{ animationDelay: '0.2s' }}>
       <div className={`${styles.myNavbarItem}`}>
         <Link href="/">
-          <img src="./logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px', fontFamily: 'Preahvihear, sans-serif' }} />
+          <img src="/logo.jpg" alt="Logo" style={{ display: 'inline', width: '30px', height: '30px', marginRight: '10px', fontFamily: 'Preahvihear, sans-serif' }} />
           <h3 style={{ display: 'inline', color: 'white' }} className="title is-4">Okay Bloomer</h3>
         </Link>
       </div>
