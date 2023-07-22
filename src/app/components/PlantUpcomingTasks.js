@@ -2,7 +2,10 @@ import React from 'react';
 import SingleTask from './SingleTask';
 
 export default function PlantUpcomingTasks({ tasks, onTaskComplete }) {
-    const upcomingTasks = tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate)).slice(0, 5);
+    const upcomingTasks = tasks
+        .filter(task => task.status === 'pending')
+        .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate))
+        .slice(0, 5);
 
     if (!tasks) {
         return <div>Loading plant tasks...</div>

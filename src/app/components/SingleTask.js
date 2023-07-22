@@ -1,9 +1,13 @@
+import axios from 'axios';
+import React from 'react';
+
 export default function SingleTask({ task, onComplete }) {
     const handleTaskCompletion = () => {
         axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/tasks/${task._id}`, { status: 'completed' })
             .then(response => {
                 if (response.status === 200) {
                     onComplete(task._id);
+                    console.log("task marked complete??,", response);
                 }
             })
             .catch(error => {

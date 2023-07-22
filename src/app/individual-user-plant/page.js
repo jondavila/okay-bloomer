@@ -44,7 +44,7 @@ export default function PlantPage() {
                 console.log('boogie woogie =================', response.data);
                 const targetPlant = response.data.user.plants[0].userPlants.find(plant => plant.plantId.toString() === plantId);
                 if (targetPlant) {
-                    setTasks(targetPlant.plantTasks);
+                    setUpcomingTasks(targetPlant.plantTasks);
                     console.log('Found the tasks!!', targetPlant.plantTasks);
                 } else {
                     console.log('No plant with the given plantId found');
