@@ -10,6 +10,8 @@ export default function Profile() {
     const [user, setUser] = useState(null);
     const [isLoading, setLoading] = useState(true);
     const [plants, setPlants] = useState([]);
+    const [name, setName] = useState([]);
+    const [email, setEmail] = useState([]);
 
     useEffect(() => {
         let userEmail = localStorage.getItem('email');
@@ -18,6 +20,8 @@ export default function Profile() {
                 console.log('boogie woogie =================', response.data);
                 setUser(response.data.user);
                 setPlants(response.data.user.plants[0].userPlants);
+                setName(response.data.user.name);
+                setEmail(response.data.user.email);
                 setLoading(false);
             })
             .catch(error => {
@@ -44,7 +48,8 @@ export default function Profile() {
                                 <figure className="image is-140x140 is-rounded" style={{ padding: '20px' }} >
                                     <img className="is-rounded" src="/profile.jpg" alt="Profile Picture" />
                                 </figure>
-                                <p className="title is-4 has-text-centered">Username</p>
+                                <p className="title is-4 has-text-centered">{name}</p>
+                                <p className="has-text-centered">email: {email}</p>
                                 <div className="buttons is-centered mt-3">
                                     <button className="button is-primary is-small">Edit</button>
                                     <a href='/sanctuary'><button className="button is-link is-small">My Sanctuary</button></a>
