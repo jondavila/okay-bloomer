@@ -1,10 +1,17 @@
-import React from 'react';
-import Image from 'next/image';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../header.module.css';
 import 'animate.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const Header = ({ pageTitle, profileImg }) => {
+const Header = ({ pageTitle }) => {
+  const [isActive, setIsActive] = useState(false);
+
+  const handleClick = () => {
+    setIsActive(!isActive);
+  };
+
   return (
     <nav className={`navbar ${styles.myNavbar} animate__animated animate__fadeIn`} role="navigation" aria-label="main navigation" style={{ animationDelay: '0.2s' }}>
       <div className={`${styles.myNavbarItem}`}>
@@ -19,9 +26,22 @@ const Header = ({ pageTitle, profileImg }) => {
       </div>
 
       <div className={`${styles.myNavbarItem}`}>
-        <Link href="/profile">
-          <Image src={profileImg} width={50} height={50} className="rounded-full" alt='Profile Image' />
-        </Link>
+        <div className={`dropdown ${isActive ? 'is-active' : ''}`}>
+          <div className="dropdown-trigger">
+            <button onClick={handleClick} className="button" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span className="icon">
+                <FontAwesomeIcon icon={faBars} /> {/* this is the hamburger icon */}
+              </span>
+            </button>
+          </div>
+          <div className="dropdown-menu" id="dropdown-menu" role="menu">
+            <div className="dropdown-content">
+              <Link href="/profile">Profile</Link>
+              <Link href="/sanctuary">Sanctuary</Link>
+              {/* Add as many routes as you want */}
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   );
