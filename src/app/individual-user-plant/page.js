@@ -22,8 +22,14 @@ export default function PlantPage() {
 
 
     const handleTaskCompletion = (taskId) => {
-        setUpcomingTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+        const completedTask = upcomingTasks.find(task => task._id === taskId);
+        if (completedTask) {
+            completedTask.status = 'completed'; // or 'missed', depending on your logic
+            setPastTasks(prevTasks => [...prevTasks, completedTask]);
+            setUpcomingTasks(prevTasks => prevTasks.filter(task => task._id !== taskId));
+        }
     };
+
 
     useEffect(() => {
         const plantId = localStorage.getItem('plant-id');
@@ -71,7 +77,7 @@ export default function PlantPage() {
             <Header pageTitle="My Plant" profileImg="/path_to_profile_image.jpg" />
             <div className={styles.container}>
                 <div className="columns">
-                    <div className="column is-3">
+                    <div className="column is-3 animate__animated animate__fadeInLeft">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <HealthRating tasks={pastTasks} />
@@ -79,14 +85,14 @@ export default function PlantPage() {
                         </div>
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
-                                <CareRecord tasks={upcomingTasks} />
+                                <CareRecord tasks={pastTasks} />
                             </div>
                         </div>
                         <div className={`has-text-centered`}>
                             <button className="button is-danger">Remove Plant</button>
                         </div>
                     </div>
-                    <div className="column is-6">
+                    <div className="column is-6 animate__animated animate__fadeInDown">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <p className="title is-4">{ }</p>
@@ -98,18 +104,18 @@ export default function PlantPage() {
                                 </div>
                             </div>
                         </div>
-                        <div className={'card'}>
-                            <div className="card-content has-text-centered">
-                                <p className="subtitle is-6">Add a note about today:</p>
-                                {/* <div className="control">
+                        {/* <div className={'card'}> */}
+                        {/* <div className="card-content has-text-centered"> */}
+                        {/* <p className="subtitle is-6">Add a note about today:</p> */}
+                        {/* <div className="control">
                                     <input className="input" type="text" placeholder="Add Title"></input>
                                     <textarea className="textarea mt-3" placeholder="Journal Entry..."></textarea>
                                 </div> */}
-                                <button className="button is-info is-success">Add to Journal</button>
-                            </div>
-                        </div>
+                        {/* <button className="button is-info is-success">Add to Journal</button> */}
+                        {/* </div> */}
+                        {/* </div> */}
                     </div>
-                    <div className="column is-3">
+                    <div className="column is-3 animate__animated animate__fadeInRight">
                         <div className={'card'}>
                             <div className="card-content has-text-centered">
                                 <PlantUpcomingTasks tasks={upcomingTasks} onTaskComplete={handleTaskCompletion} />

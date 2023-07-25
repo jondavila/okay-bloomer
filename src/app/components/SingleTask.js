@@ -10,6 +10,7 @@ export default function SingleTask({ task, onComplete }) {
                     onComplete(task._id);
                     console.log("task marked complete??,", response);
                 }
+
             })
             .catch(error => {
                 console.error('Error marking task as complete: ', error);

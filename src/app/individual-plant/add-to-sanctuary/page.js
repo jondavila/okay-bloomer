@@ -44,7 +44,7 @@ const PlantCarePage = () => {
 
     return (
         <div>
-            <Header pageTitle="Add Plant to Sanctuary -- Care Guide" profileImg="/path_to_profile_image.jpg" />
+            <Header pageTitle="Care Guide" profileImg="/path_to_profile_image.jpg" />
             <br />
             <div className="container">
                 <PlantSanctuaryEntry plant={plant} guide={guide} />

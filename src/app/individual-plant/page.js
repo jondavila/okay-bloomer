@@ -41,7 +41,7 @@ export default function IndividualPlant() {
             <br />
             <div className="container">
                 <div className="columns is-multiline">
-                    <div className="column is-4">
+                    <div className="column is-4 animate__animated animate__fadeInLeft">
                         <div className="card">
                             {plant && plant.image &&
                                 <div className="card-image">
@@ -67,7 +67,7 @@ export default function IndividualPlant() {
                             }
                         </div>
                     </div>
-                    <div className="column is-8">
+                    <div className="column is-8 animate__animated animate__fadeInDown">
                         <div className="card">
                             <div className="card-content has-text-centered">
                                 {plant.commonName && <p className="title is-4">{plant.commonName}</p>}
